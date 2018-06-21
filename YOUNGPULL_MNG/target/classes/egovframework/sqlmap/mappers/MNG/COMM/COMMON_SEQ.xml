@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.study.cmmn.service.impl.CommonMapper">
+	
+	<!-- fileView -->
+	<select id="selectFileView" parameterType="egovMap" resultType="egovMap">
+		SELECT
+			 ${COLUMN_STORED_FILE_NAME}		AS	STORED_FILE_NAME
+			,${COLUMN_ORIGINAL_FILE_NAME}	AS	ORIGINAL_FILE_NAME
+			,${COLUMN_FILE_PATH}		AS	STORED_FILE_PATH
+		FROM
+			${TABLE_NAME}
+		WHERE
+			${COLUMN_FILE_IDX} = #{FILE_SEQ_N}
+	</select>
+
+</mapper>

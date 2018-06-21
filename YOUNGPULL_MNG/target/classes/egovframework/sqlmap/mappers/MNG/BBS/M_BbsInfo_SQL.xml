@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.MNG.BBS.service.impl.M_BbsInfoMapper">
+
+	<!-- 게시판 목록조회 -->
+	<select id="bbsInfoList" parameterType="egovMap" resultType="bbsInfoVo">
+		SELECT
+			 BI_SEQ_N
+			,BS_SEQ_N
+			,BI_TITLE_V
+			,BI_CONTENT_T
+			,BI_NAME_V
+			,BI_ID_V
+			,BI_PHONE_V
+			,BI_FILESEQ_N
+			,BI_USEYN_C
+			,BI_LINKURL_V
+			,BI_GUBUN_V
+			,BI_ETC1_V
+			,BI_ETC2_V
+			,BI_ETC3_V
+			,BI_ETC4_V
+			,BI_ETC5_V
+			,BI_HITCOUNT_N
+			,BI_OPENYN_C
+			,BI_NOTICEYN_C
+			,IF(DATEDIFF(NOW(),REG_DTM_D) &lt;= 5,'NEW','') AS NEW_DATA
+			,DATE_FORMAT(REG_DTM_D, '%Y.%m.%d %T') REG_DTM_D
+			,DATE_FORMAT(BI_STARTDTM_D, '%Y.%m.%d') BI_STARTDTM_D
+			,DATE_FORMAT(BI_ENDDTM_D, '%Y.%m.%d') BI_ENDDTM_D
+		FROM
+			TB_BBS_INFO
+		WHERE
+			BS_SEQ_N = #{bs_seq_n}
+		AND
+			DEL_YN_C = 'N'
+			
+		<if test="search_val != null and search_val != '' ">
+			<if test="search_key == 'all' ">
+				AND ( 
+				   BI_TITLE_V LIKE '%${search_val}%' 
+				   OR BI_CONTENT_T LIKE '%${search_val}%'
+				 )
+			</if>
+		</if>
+		<if test="bi_gubun_v != null and bi_gubun_v != '' ">
+			AND BI_GUBUN_V = #{bi_gubun_v}
+		</if>
+		<if test="bi_openYn_c != null and bi_openYn_c != '' ">
+			AND BI_OPENYN_C = #{bi_openYn_c}
+		</if>
+		<if test="bi_linkUrl_v != null and bi_linkUrl_v != '' ">
+			AND BI_LINKURL_V  LIKE '%${bi_linkUrl_v}%' 
+		</if>
+		<if test="bi_title_v != null and bi_title_v != '' ">
+			AND BI_TITLE_V  LIKE '%${bi_title_v}%' 
+		</if>
+		ORDER BY REG_DTM_D DESC
+		LIMIT ${STARTPAGE}, ${ENDPAGE}
+	</select>
+  
+	<!-- 게시판 목록 카운트 조회 -->
+	<select id="bbsInfoListCount" parameterType="egovMap" resultType="int">
+		SELECT
+			COUNT(*) CNT
+		FROM
+			TB_BBS_INFO
+		WHERE
+			BS_SEQ_N = #{bs_seq_n}
+		AND
+			DEL_YN_C = 'N'
+		<if test="search_val != null and search_val != '' ">
+			<if test="search_key == 'all' ">
+				AND ( 
+				   BI_TITLE_V LIKE '%${search_val}%' 
+				   OR BI_CONTENT_T LIKE '%${search_val}%'
+				 )
+			</if>
+		</if>
+		<if test="bi_gubun_v != null and bi_gubun_v != '' ">
+			AND BI_GUBUN_V = #{bi_gubun_v}
+		</if>
+		<if test="bi_openYn_c != null and bi_openYn_c != '' ">
+			AND BI_OPENYN_C = #{bi_openYn_c}
+		</if>
+		<if test="bi_linkUrl_v != null and bi_linkUrl_v != '' ">
+			AND BI_LINKURL_V  LIKE '%${bi_linkUrl_v}%' 
+		</if>
+		<if test="bi_title_v != null and bi_title_v != '' ">
+			AND BI_TITLE_V  LIKE '%${bi_title_v}%' 
+		</if>
+	</select>
+	
+	<!-- 게시판 상세조회 -->
+	<select id="bbsInfoView" parameterType="egovMap" resultType="bbsInfoVo">
+		SELECT
+			 BI_SEQ_N
+			,BS_SEQ_N
+			,BI_TITLE_V
+			,BI_CONTENT_T
+			,BI_NAME_V
+			,BI_ID_V
+			,BI_PHONE_V
+			,BI_FILESEQ_N
+			,BI_USEYN_C
+			,BI_LINKURL_V
+			,BI_GUBUN_V
+			,BI_ETC1_V
+			,BI_ETC2_V
+			,BI_ETC3_V
+			,BI_ETC4_V
+			,BI_ETC5_V
+			,BI_HITCOUNT_N
+			,BI_OPENYN_C
+			,BI_NOTICEYN_C
+			,BI_THUMBNAIL_V
+			,DATE_FORMAT(REG_DTM_D, '%Y.%m.%d %T') REG_DTM_D
+			,DATE_FORMAT(BI_STARTDTM_D, '%Y.%m.%d') BI_STARTDTM_D
+			,DATE_FORMAT(BI_ENDDTM_D, '%Y.%m.%d') BI_ENDDTM_D
+		FROM
+			TB_BBS_INFO
+		WHERE
+			BS_SEQ_N = #{bs_seq_n}
+		AND
+			BI_SEQ_N = #{bi_seq_n}
+	</select>
+	
+		
+	<!-- 첨부파일 등록 BI_SEQ_N 구하기 -->
+	<select id="selectBbsInfoSeq" parameterType="egovMap" resultType="string">
+		SELECT
+			IFNULL( MAX(BI_SEQ_N), 0) AS BI_SEQ_N 
+		FROM 
+			TB_BBS_INFO
+		WHERE
+			BS_SEQ_N = #{bs_seq_n}
+	</select>
+	
+	<!-- 등록 -->
+	<insert id="bbsInfoInsert" parameterType="egovMap" useGeneratedKeys="true" keyProperty="bi_seq_n">
+		<selectKey keyProperty="bi_seq_n" resultType="string" order="BEFORE">
+			SELECT IFNULL( MAX(BI_SEQ_N), 0) + 1 AS BI_SEQ_N FROM TB_BBS_INFO
+		</selectKey>
+		INSERT INTO
+			TB_BBS_INFO (
+						 BI_SEQ_N
+						,BS_SEQ_N
+						,BI_TITLE_V
+						,BI_CONTENT_T
+						,BI_NAME_V
+						,BI_ID_V
+						,BI_PHONE_V
+						,BI_FILESEQ_N
+						,BI_USEYN_C
+						,BI_LINKURL_V
+						,BI_GUBUN_V
+						,BI_HITCOUNT_N
+						,BI_NOTICEYN_C
+						,BI_OPENYN_C
+						,BI_ETC1_V
+						,BI_ETC2_V
+						,BI_ETC3_V
+						,BI_ETC4_V
+						,BI_ETC5_V
+						,REG_DTM_D
+						,REG_ID_V
+						,BI_THUMBNAIL_V
+						,BI_STARTDTM_D
+						,BI_ENDDTM_D
+					)VALUES(
+						 #{bi_seq_n}
+						,#{bs_seq_n}
+						,#{bi_title_v}
+						,#{bi_content_t}
+						,#{bi_name_v}
+						,#{bi_id_v}
+						,#{bi_phone_v}
+						,#{bi_fileSeq_n}
+						,#{bi_useYn_c}
+						,#{bi_linkUrl_v}
+						,#{bi_gubun_v}
+						,#{bi_hitCount_n}
+						,IFNULL(#{bi_noticeYn_c},'N')
+						,#{bi_openYn_c}
+						,#{bi_etc1_v}
+						,#{bi_etc2_v}
+						,#{bi_etc3_v}
+						,#{bi_etc4_v}
+						,#{bi_etc5_v}
+						,now()
+						,#{reg_id_v}
+						,#{bi_thumbNail_v}
+						,#{bi_startDtm_d}
+						,#{bi_endDtm_d}
+					)
+	</insert>
+	
+	
+	<!-- 수정 -->
+	<update id="bbsInfoUpdate" parameterType="egovMap">
+		UPDATE TB_BBS_INFO
+			SET
+				 BI_TITLE_V		=	#{bi_title_v}
+				,BI_CONTENT_T	=	#{bi_content_t}
+				,BI_NAME_V		=	#{bi_name_v}
+				,BI_ID_V		=	#{bi_id_v}
+				,BI_PHONE_V		=	#{bi_phone_v}
+				,BI_USEYN_C		=	#{bi_useYn_c}
+				,BI_LINKURL_V	=	#{bi_linkUrl_v}
+				,BI_GUBUN_V		=	#{bi_gubun_v}
+				,BI_ETC1_V		=	#{bi_etc1_v}
+				,BI_ETC2_V		=	#{bi_etc2_v}
+				,BI_ETC3_V		=	#{bi_etc3_v}
+				,BI_ETC4_V		=	#{bi_etc4_v}
+				,BI_ETC5_V		=	#{bi_etc5_v}
+				,BI_HITCOUNT_N	=	#{bi_hitCount_n}
+				,BI_OPENYN_C	=	#{bi_openYn_c}
+				,BI_NOTICEYN_C	=	#{bi_noticeYn_c}
+				,UP_DTM_D		=	now()
+				,UP_ID_V		=	#{up_id_v}
+				,BI_THUMBNAIL_V =	#{bi_thumbNail_v}
+				,BI_STARTDTM_D	=	#{bi_startDtm_d}
+				,BI_ENDDTM_D	=	#{bi_endDtm_d}
+			WHERE
+				bi_seq_n	=	${bi_seq_n}
+			AND
+				bs_seq_n	=	${bs_seq_n}
+	</update>
+	
+	
+	<!-- 삭제 -->
+	<update id="bbsInfoDelete" parameterType="egovMap">
+		UPDATE TB_BBS_INFO
+			SET
+				DEL_YN_C = 'Y'
+			WHERE
+				bi_seq_n	=	${bi_seq_n}
+			AND
+				bs_seq_n	=	${bs_seq_n}
+	</update>
+	
+	<!-- 파일 등록 -->
+	<insert id="bbsInfoFileInsert" parameterType="egovMap" useGeneratedKeys="true" keyProperty="bf_seq_n">
+		<selectKey keyProperty="bf_seq_n" resultType="string" order="BEFORE">
+			SELECT IFNULL( MAX(BF_SEQ_N), 0) + 1 AS BF_SEQ_N FROM TB_BBS_FILE
+		</selectKey>
+		INSERT INTO
+			TB_BBS_FILE (
+					 BF_SEQ_N
+					,BI_SEQ_N
+					,BF_ORGFILENAME_V
+					,BF_STORFILENAME_V
+					,BF_FILEPATH_V
+					,BF_FILESIZE_N
+					,REG_DTM_D
+					,REG_ID_V
+				)VALUES(
+					 #{bf_seq_n}
+					,#{bi_seq_n}
+					,#{bf_orgFileName_v}
+					,#{bf_storFileName_v}
+					,#{bf_filePath_v}
+					,#{bf_fileSize_n}
+					,now()
+					,#{reg_id_v}
+				)
+	</insert>
+	
+	<!-- 파일 목록 -->
+	<select id="bbsInfoFileList" parameterType="egovMap" resultType="bbsInfoVo">
+		SELECT
+			 BF_SEQ_N
+			,BI_SEQ_N
+			,BF_ORGFILENAME_V
+			,BF_STORFILENAME_V
+			,BF_FILEPATH_V
+			,ROUND(BF_FILESIZE_N/1024,1) AS BF_FILESIZE_N
+			,REG_DTM_D
+			,REG_ID_V
+		FROM
+			TB_BBS_FILE
+		WHERE
+			BI_SEQ_N = #{bi_seq_n}
+		AND
+			DEL_YN_C = 'N'
+	</select>
+	
+	<!-- 파일 수정 -->
+	<update id="bbsInfoFileUpdate" parameterType="egovMap">
+		UPDATE TB_BBS_FILE 
+		SET
+			DEL_YN_C = 'N'
+		WHERE
+			BF_SEQ_N = #{bf_seq_n}
+	</update>
+	
+	<!-- 파일 삭제 -->
+	<update id="bbsInfoFileDelete" parameterType="egovMap">
+		UPDATE TB_BBS_FILE 
+		SET
+			DEL_YN_C = 'Y'
+		WHERE
+			BI_SEQ_N = #{bi_seq_n}
+		AND
+			BF_SEQ_N = #{bf_seq_n}
+	</update>
+	
+	<!-- 파일전체삭제 -->
+	<update id="bbsInfoFileListDelete" parameterType="egovMap">
+		UPDATE TB_BBS_FILE 
+		SET
+			DEL_YN_C = 'Y'
+		WHERE
+			BI_SEQ_N = #{bi_seq_n}
+	</update>
+	
+	<!-- 공개/비공개 설정 -->
+	<update id="bbsInfoOpenYnUpdate" parameterType="egovMap">
+		UPDATE TB_BBS_INFO
+		SET
+			BI_OPENYN_C = #{openYn}
+		WHERE
+			BI_SEQ_N = #{bi_seq_n}
+		AND
+			BS_SEQ_N = #{bs_seq_n}
+	</update>
+	
+</mapper>
