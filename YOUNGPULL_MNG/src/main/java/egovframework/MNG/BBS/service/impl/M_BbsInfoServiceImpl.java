@@ -20,7 +20,7 @@ public class M_BbsInfoServiceImpl extends EgovAbstractServiceImpl implements M_B
 	private FileUtils fileUtils;
 	
 	@Resource(name="mBbsInfoMapper")
-	private M_BbsInfoMapper mBbsInfoMapper;
+	private M_BbsInfoMapper mBbsInfoMapper; 
 
 	@Override
 	public List bbsInfoList(Map paramMap) throws Exception {
