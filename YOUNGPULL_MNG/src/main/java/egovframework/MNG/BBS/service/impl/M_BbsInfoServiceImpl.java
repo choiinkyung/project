@@ -19,7 +19,7 @@ public class M_BbsInfoServiceImpl extends EgovAbstractServiceImpl implements M_B
 	@Resource(name="fileUtils")
 	private FileUtils fileUtils;
 	
-	@Resource(name="mBbsInfoMapper")
+	@Resource(name="mBbsInfoMapper") 
 	private M_BbsInfoMapper mBbsInfoMapper; 
 
 	@Override
