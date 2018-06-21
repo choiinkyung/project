@@ -26,7 +26,7 @@ public class M_BbsInfoServiceImpl extends EgovAbstractServiceImpl implements M_B
 	public List bbsInfoList(Map paramMap) throws Exception {
 		// TODO Auto-generated method stub
 		return mBbsInfoMapper.bbsInfoList(paramMap);
-	}
+	} 
 
 	@Override
 	public int bbsInfoListCount(Map paramMap) throws Exception {
