@@ -1,5 +1,5 @@
 package egovframework.common;
-//sadsa
+
 
 public class SettingKey {
 	/** 기본 경로 */
