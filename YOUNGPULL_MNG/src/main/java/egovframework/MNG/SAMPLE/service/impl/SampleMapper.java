@@ -1,11 +1,13 @@
-package egovframework.MNG.SAMPLE.service;
+package egovframework.MNG.SAMPLE.service.impl;
 
 import java.util.List;
 import java.util.Map;
 
-import org.json.simple.JSONObject;
+import egovframework.MNG.SAMPLE.service.SampleVo;
+import egovframework.rte.psl.dataaccess.mapper.Mapper;
 
-public interface SampleSvc {
+@Mapper ("sampleMapper")
+public interface SampleMapper {
 
 	/**
 	 * 샘플 목록 조회
@@ -21,7 +23,7 @@ public interface SampleSvc {
 	 * @return 샘플 카운트조획 결과값
 	 * @throws Exception
 	 */
-	int SAMPLE_CNT_R  (Map paramMap) throws Exception;
+	int SAMPLE_CNT_R(Map paramMap) throws Exception;
 	
 	/**
 	 * 샘플 상세조회
@@ -31,13 +33,19 @@ public interface SampleSvc {
 	 */
 	SampleVo SAMPLE_DTL_R(Map paramMap) throws Exception;
 	
-	
 	/**
-	 * 샘플 저장/수정/삭제 로직 처리
+	 * 샘플 저장 및 수정
 	 * @param paramMap
 	 * @throws Exception
 	 */
-	JSONObject SAMPLE_CUD (Map paramMap) throws Exception;
+	void SAMPLE_CU(Map paramMap) throws Exception;
+	
+	/**
+	 * 샘플 삭제
+	 * @param paramMap
+	 * @throws Exception
+	 */
+	void SMAPLE_D(Map paramMap) throws Exception;
 	
 	
 }

@@ -256,6 +256,13 @@
 		    <version>2.2.0</version>
 		</dependency>
 		
+		<dependency>
+	      <groupId>com.googlecode.json-simple</groupId>
+	      <artifactId>json-simple</artifactId>
+	      <version>1.1</version>
+	</dependency>
+
+
   </dependencies>
 
 	<build>
@@ -413,6 +420,18 @@
                     <javadocDir>apidocs</javadocDir>
                 </configuration>
             </plugin>
+            <plugin>
+			    <groupId>org.apache.tomcat.maven</groupId>
+			    <artifactId>tomcat7-maven-plugin</artifactId>
+			    <version>2.2</version>
+			    <configuration>
+			        <port>80</port>
+			        <path>/</path>
+			        <systemProperties>
+			            <JAVA_OPTS>-Xms256m -Xmx768m -XX:MaxPermSize=256m</JAVA_OPTS>
+			        </systemProperties>
+			    </configuration>
+			</plugin>
         </plugins>
     </reporting>
 </project>

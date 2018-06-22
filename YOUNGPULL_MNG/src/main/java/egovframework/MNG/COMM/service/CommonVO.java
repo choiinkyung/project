@@ -1,5 +1,7 @@
 package egovframework.MNG.COMM.service;
 
+import com.sun.xml.internal.ws.developer.Serialization;
+
 /**
  * 공통VO
  * 공통으로 사용되는 것만 입력할 것.
@@ -10,6 +12,7 @@ package egovframework.MNG.COMM.service;
  * @author admin
  *
  */
+@Serialization
 public class CommonVO {
 
 	/** 등록일 */
@@ -20,10 +23,6 @@ public class CommonVO {
 	private String up_dtm_d;
 	/** 수정아이디 */
 	private String up_id_v;
-	/** 삭제일 */
-	private String del_dtm_d;
-	/** 삭제아이디 */
-	private String del_id_v;
 	/** 삭제여부 */
 	private String del_yn_c;
 	/** 검색 조건 */
@@ -36,10 +35,6 @@ public class CommonVO {
 	private String code_no;
 	/** 코드명 */
 	private String code_name_v;
-	/** 선생님이름 */
-	private String man_name_v;
-	/** 선생님아이디 */
-	private String man_id_v;
 	/** 코드번호 */
 	private String code_mcode_v;
 	/** 이전글 번호 */
@@ -94,15 +89,6 @@ public class CommonVO {
 	/**
 	 * @return the man_id_v
 	 */
-	public String getMan_id_v() {
-		return man_id_v;
-	}
-	/**
-	 * @param man_id_v the man_id_v to set
-	 */
-	public void setMan_id_v(String man_id_v) {
-		this.man_id_v = man_id_v;
-	}
 	/**
 	 * @return the code_mcode_v
 	 */
@@ -126,18 +112,6 @@ public class CommonVO {
 	 */
 	public void setCode_name_v(String code_name_v) {
 		this.code_name_v = code_name_v;
-	}
-	/**
-	 * @return the man_name_v
-	 */
-	public String getMan_name_v() {
-		return man_name_v;
-	}
-	/**
-	 * @param man_name_v the man_name_v to set
-	 */
-	public void setMan_name_v(String man_name_v) {
-		this.man_name_v = man_name_v;
 	}
 	/**
 	 * @return the search_key
@@ -210,30 +184,6 @@ public class CommonVO {
 	 */
 	public void setUp_id_v(String up_id_v) {
 		this.up_id_v = up_id_v;
-	}
-	/**
-	 * @return the del_dtm_d
-	 */
-	public String getDel_dtm_d() {
-		return del_dtm_d;
-	}
-	/**
-	 * @param del_dtm_d the del_dtm_d to set
-	 */
-	public void setDel_dtm_d(String del_dtm_d) {
-		this.del_dtm_d = del_dtm_d;
-	}
-	/**
-	 * @return the del_id_v
-	 */
-	public String getDel_id_v() {
-		return del_id_v;
-	}
-	/**
-	 * @param del_id_v the del_id_v to set
-	 */
-	public void setDel_id_v(String del_id_v) {
-		this.del_id_v = del_id_v;
 	}
 	/**
 	 * @return the del_yn_c
