@@ -21,8 +21,8 @@ public class AdministratorSvcImpl extends EgovAbstractServiceImpl implements Adm
 	@Resource(name="fileUtils")
 	private FileUtils fileUtils;
 	
-	@Resource(name="sampleMapper") 
-	private AdministratorMapper administratorMapper; 
+	@Resource(name="adminMapper") 
+	private AdministratorMapper adminMapper; 
 	
 	@Resource(name = "sampleIndexService")
 	private EgovIdGnrService sampleIndexService;
@@ -31,19 +31,19 @@ public class AdministratorSvcImpl extends EgovAbstractServiceImpl implements Adm
 	public List SAMPLE_R(Map paramMap) throws Exception {
 		// TODO Auto-generated method stub
 		
-		return administratorMapper.SAMPLE_R(paramMap);
+		return adminMapper.SAMPLE_R(paramMap);
 	}
 
 	@Override
 	public int SAMPLE_CNT_R(Map paramMap) throws Exception {
 		// TODO Auto-generated method stub
-		return administratorMapper.SAMPLE_CNT_R(paramMap);
+		return adminMapper.SAMPLE_CNT_R(paramMap);
 	}
 
 	@Override
 	public AdministratorVo SAMPLE_DTL_R(Map paramMap) throws Exception {
 		// TODO Auto-generated method stub
-		return administratorMapper.SAMPLE_DTL_R(paramMap);
+		return adminMapper.SAMPLE_DTL_R(paramMap);
 	}
 
 	@Override

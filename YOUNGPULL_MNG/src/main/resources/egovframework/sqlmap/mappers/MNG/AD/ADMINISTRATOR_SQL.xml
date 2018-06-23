@@ -4,30 +4,13 @@
 
 	<select id="SAMPLE_R" parameterType="egovMap" resultType="sampleVo">
 		SELECT *
-		FROM TB_SAMPLE
+		FROM AD_ADMIN_MST
 		WHERE 1=1
-		<if test="search_val != null and search_val != '' ">
-			<choose>
-				<when test="schKey == 'schName' ">
-				   AND NAME_V LIKE '%${schVal}%' 
-				</when>
-				<when test="schKey == 'schId' ">
-				   AND ID_V LIKE '%${schVal}%' 
-				</when>
-				<otherwise>
-					AND ( 
-						   NAME_V LIKE '%${schVal}%' 
-						   OR ID_V LIKE '%${schVal}%'
-						 )
-				</otherwise>
-			</choose>
-		</if>
-		LIMIT ${STARTPAGE}, ${ENDPAGE}
 	</select>
 	
 	<select id="SAMPLE_CNT_R" parameterType="egovMap" resultType="int">
 		SELECT COUNT(*)
-		FROM TB_SAMPLE 
+		FROM AD_ADMIN_MST
 	</select>
 	
 	<insert id="SAMPLE_CU"  parameterType="egovMap">

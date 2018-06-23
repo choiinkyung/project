@@ -21,7 +21,7 @@ public class AdministratorCtrl {
 
 	
 	@Resource(name = "adminSvc")
-	private AdministratorSvc administratorSvc;
+	private AdministratorSvc adminSvc;
 	
 	/**
 	 * 샘플 목록조회
@@ -37,9 +37,9 @@ public class AdministratorCtrl {
 		System.out.println(">>>>>>>>paramMap = " + paramMap);
 		try {
 			Map pageMap = Page.PageSet(paramMap, 
-					administratorSvc.SAMPLE_CNT_R(paramMap), 10, 10);
+					adminSvc.SAMPLE_CNT_R(paramMap), 10, 10);
 			
-			List list = administratorSvc.SAMPLE_R(pageMap);
+			List list = adminSvc.SAMPLE_R(pageMap);
 			System.out.println(">>>>>>>>list = " + list);
 			model.addAttribute("resultList", list);
 			model.addAttribute("resultMap", pageMap);
@@ -48,7 +48,7 @@ public class AdministratorCtrl {
 			e.printStackTrace();
 		}
 		
-		return "/MNG/SAMPLE/sampleList";
+		return "/MNG/AD/adminList";
 	}
 	
 	/**
@@ -64,7 +64,7 @@ public class AdministratorCtrl {
 		Map paramMap = RequestUtil.process(request);
 		try {
 			if ("U".equals(paramMap.get("dataStatus"))) {
-				model.addAttribute("sample", administratorSvc.SAMPLE_DTL_R(paramMap));
+				model.addAttribute("sample", adminSvc.SAMPLE_DTL_R(paramMap));
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -85,7 +85,7 @@ public class AdministratorCtrl {
 		
 		Map paramMap = RequestUtil.process(request);
 		
-		return administratorSvc.SAMPLE_CUD(paramMap);
+		return adminSvc.SAMPLE_CUD(paramMap);
 	}
 	
 	
