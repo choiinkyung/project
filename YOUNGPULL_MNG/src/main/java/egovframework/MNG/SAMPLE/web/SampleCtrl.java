@@ -34,6 +34,7 @@ public class SampleCtrl {
 	public String SAMPLE_R(ModelMap model, HttpServletRequest request) throws Exception {
 
 		Map paramMap = RequestUtil.process(request);
+		System.out.println(">>>>>>>>paramMap = " + paramMap);
 		try {
 			Map pageMap = Page.PageSet(paramMap, 
 					sampleSvc.SAMPLE_CNT_R(paramMap), 10, 10);
@@ -61,8 +62,13 @@ public class SampleCtrl {
 	public String SAMPLE_DTL_R(ModelMap model, HttpServletRequest request) throws Exception {
 		
 		Map paramMap = RequestUtil.process(request);
-		if ("U".equals(paramMap.get("dataStatus"))) {
-			model.addAttribute("sample", sampleSvc.SAMPLE_DTL_R(paramMap));
+		try {
+			if ("U".equals(paramMap.get("dataStatus"))) {
+				model.addAttribute("sample", sampleSvc.SAMPLE_DTL_R(paramMap));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return "/MNG/SAMPLE/sampleForm";
 	}

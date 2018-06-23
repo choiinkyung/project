@@ -6,62 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-$(document).ready(function(){
-	//검색
-	$("#jsSearch").click(function(){
-		$("#searchForm").on("submit", function(event) {
-			event.preventDefault();
-		});
-	});
-  
-	//초기화
-	$("#jsClear").click(function(){
-		$("#searchForm").on("submit", function(event) {
-			event.preventDefault();
-			$("#searchForm").reset();
-		});
-	});
-	
-	//등록폼이동
-	$("#jsForm").click(function(){
-		$("#searchForm").on("submit", function(event) {
-			event.preventDefault();
-			$("#searchForm").attr("action", "/mng/sample/sampleForm.do");
-	   });
-	});
-	
-	//엑셀다운로드
-	$("#jsExcelDown").click(function(){
-		$("#searchForm").on("submit", function(event) {
-			event.preventDefault();
-			$("#searchForm").attr("action", "/mng/sample/excel/excelDown.do");
-	   });
-	});
-   
-	
-});
-	
-    
-//페이징처리
-function linkPage(pageNo){
- //페이지를 다시 불러오는 것을 방지하기 위해 preventDefault()를 호출
-   $("#searchForm").on("submit", function(event) {
-      event.preventDefault();
-      $("#pageNo").val(pageNo);
-   });
-}
-
-</script>
 </head>
 
 <body>
 <section id="content">
 	<h1>샘플 - 목록</h1>
 	<div class="location">Main &gt;운영관리&gt; <strong>샘플</strong></div>
-	<form name="searchForm" method="post" action="/mng/sample/sampleList.do">
+	<form name="searchForm" id="searchForm" method="post" action="/mng/sample/sampleList.do">
 	<input type="hidden" name="pageNo" value="${resultMap.pageNo }">
-	<input type="hidden" name="dataStatus" id="dataStatus">
+	<input type="text" name="dataStatus" id="dataStatus">
 		
 		<div class="searchBox" style="padding:3%;">
 			<dl class="kind">
@@ -146,3 +99,52 @@ function linkPage(pageNo){
 	</div>
 </section>
 </body>
+
+<script type="text/javascript">
+$(function(){
+	//검색
+	$("#jsSearch").click(function(){
+		$("#searchForm").on("submit", function(event) {
+			event.preventDefault();
+		});
+	});
+  
+	//초기화
+	$("#jsClear").click(function(){
+		$("#searchForm").on("submit", function(event) {
+			$("#searchForm").reset();
+			event.preventDefault();
+		});
+	});
+	
+	//등록폼이동
+	$("#jsForm").click(function(){
+		$("#searchForm").on("submit", function(event) {
+			alert("dddddddddddddd");
+			$("#dataStatus").val("I");
+			$("#searchForm").attr("action", "/mng/sample/sampleForm.do");
+			event.preventDefault();
+	   });
+	});
+	
+	//엑셀다운로드
+	$("#jsExcelDown").click(function(){
+		$("#searchForm").on("submit", function(event) {
+			$("#searchForm").attr("action", "/mng/sample/excel/excelDown.do");
+			event.preventDefault();
+	   });
+	});
+	
+});
+	
+    
+//페이징처리
+function linkPage(pageNo){
+ //페이지를 다시 불러오는 것을 방지하기 위해 preventDefault()를 호출
+   $("#searchForm").on("submit", function(event) {
+      event.preventDefault();
+      $("#pageNo").val(pageNo);
+   });
+}
+
+</script>
