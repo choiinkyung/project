@@ -2,8 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="egovframework.MNG.SAMPLE.service.impl.SampleMapper">
 
-	
-
 	<select id="SAMPLE_R" parameterType="egovMap" resultType="sampleVo">
 		SELECT *
 		FROM TB_SAMPLE
@@ -32,22 +30,16 @@
 		FROM TB_SAMPLE 
 	</select>
 	
-	<select id="SAMPLE_DTL_R" parameterType="egovMap" resultType="sampleVo">
-		SELECT *
-		FROM TB_SAMPLE
-		WHERE SEQ_V = #{seq_v}
-	</select>
-	
 	<insert id="SAMPLE_CU"  parameterType="egovMap">
 		INSERT INTO TB_SAMPLE
 		(
-			 SEQ_V	
-			,NAME_V	
-			,ID_V	
-			,PWD_V	
-			,FILE_SEQ_V	
-			,REG_DT_D	
-			,REG_ID_V	
+			SEQ_V	
+			NAME_V	
+			ID_V	
+			PWD_V	
+			FILE_SEQ_V	
+			REG_DT_D	
+			REG_ID_V	
 		)
 		VALUES
 		(
@@ -59,8 +51,10 @@
 			,NOW()
 			,#{reg_id_v}	
 		)
+		
 		ON DUPLICATE KEY
-		UPDATE 
+		 
+		UPDATE TB_SAMPLE SET
 			 NAME_V				=	#{name_v}
 			,ID_V				=	#{id_v}	
 			,PWD_V				=	#{pwd_v}	

@@ -33,7 +33,7 @@
 	</filter>
 	<filter-mapping>
 	    <filter-name>sitemesh</filter-name>
-	    <url-pattern>/*</url-pattern>
+	    <url-pattern>*.do</url-pattern>
 	</filter-mapping>
     
 	<context-param>
@@ -59,7 +59,12 @@
 		<servlet-name>action</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-    
+	
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.json</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

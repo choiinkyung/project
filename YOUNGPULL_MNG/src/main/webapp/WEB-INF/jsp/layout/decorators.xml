@@ -12,6 +12,7 @@
 		<pattern>/ajax/*</pattern>
 		<pattern>/excel/*</pattern>
 		<pattern>/common/*</pattern>
+		<pattern>*.json</pattern>
 	</excludes> 
 
 	<!-- 팝업목록 -->	

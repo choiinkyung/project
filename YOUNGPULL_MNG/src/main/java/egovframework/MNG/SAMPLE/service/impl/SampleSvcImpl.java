@@ -7,9 +7,11 @@ import javax.annotation.Resource;
 
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import egovframework.MNG.SAMPLE.service.SampleSvc;
 import egovframework.MNG.SAMPLE.service.SampleVo;
+import egovframework.MNG.util.CommonMessage;
 import egovframework.MNG.util.fileUtil.FileUtils;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
@@ -19,6 +21,9 @@ public class SampleSvcImpl extends EgovAbstractServiceImpl implements SampleSvc{
 	
 	@Resource(name="fileUtils")
 	private FileUtils fileUtils;
+	
+	@Resource(name="messageUtil")
+	private CommonMessage messageUtil;
 	
 	@Resource(name="sampleMapper") 
 	private SampleMapper sampleMapper; 
@@ -48,11 +53,10 @@ public class SampleSvcImpl extends EgovAbstractServiceImpl implements SampleSvc{
 	@Override
 	public JSONObject SAMPLE_CUD(Map paramMap) throws Exception {
 		// TODO Auto-generated method stub
-		JSONObject returnData = new JSONObject();
+		String dataCode = "";
+		String dataStatus = paramMap.get("dataStatus") != null || !"".equals(paramMap.get("dataStatus")) ? paramMap.get("dataStatus").toString() : "";
 		try {
-
 			//데이터 상태값
-			String dataStatus = paramMap.get("dataStatus") != null || !"".equals(paramMap.get("dataStatus")) ? paramMap.get("dataStatus").toString() : "";
 			if ("I".equals(dataStatus) || "U".equals(dataStatus)) {
 				
 				if ("I".equals(dataStatus)) {
@@ -64,22 +68,15 @@ public class SampleSvcImpl extends EgovAbstractServiceImpl implements SampleSvc{
 				sampleMapper.SMAPLE_D(paramMap);
 			}else{
 				//DB저장 상태값이 없을때 무조건 리턴시킴
-				returnData.put("result", "NULL");
-				returnData.put("returnMsg", "NULL");
-				return returnData;
+				dataCode = "99";
+				return messageUtil.returnMassage(dataStatus, messageUtil.setMsgCode(99), "데이터없음");
 			}
-			returnData.put("result", "OK");
-			returnData.put("returnMsg", "OK");
-			returnData.put("returnPage", "OK");
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			returnData.put("result", "FAIL");
-			returnData.put("returnMsg", e.getMessage());
+			return messageUtil.returnMassage(dataStatus, messageUtil.setMsgCode(1), e.getMessage());
 		}
-		return returnData;
+		return messageUtil.returnMassage(dataStatus, messageUtil.setMsgCode(0), "");
 	}
-	
-
 
 }

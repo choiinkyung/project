@@ -27,5 +27,7 @@ public class SettingKey {
 	public static final String RESULT_PAGE = "/common/commonSuccess";
 
 	public static final String PAGE_URL = "http://www.youngpullgong.com";
+	/*json 결과페이지*/
+	public static final String JSON_VIEW = "/common/jsonData";
 	
 }

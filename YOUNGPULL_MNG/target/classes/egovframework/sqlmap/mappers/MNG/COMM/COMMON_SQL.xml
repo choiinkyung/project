@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.MNG.COMM.service.impl.CommonMapper">
+	
+	<!-- fileView -->
+	<select id="selectFileView" parameterType="egovMap" resultType="egovMap">
+		SELECT
+			 CM_SEQ_V	/*파일번호*/
+			,CM_ORGFILENAME_V	/*원본파일명*/
+			,CM_STORFILENAME_V	/*저장파일명*/
+			,CM_FILEPATH_V	/*파일경로*/
+			,CM_FILESIZE_N	/*파일사이즈*/
+			,CM_REFSEQ1_V	/*참조일련번호1*/
+			,CM_REFSEQ2_V	/*참조일련번호2*/
+			,CM_REFSEQ3_V	/*참조일련번호3*/
+		FROM
+			CM_FILE
+		WHERE CM_SEQ_V = #{FILE_SEQ_V}
+		AND	  CM_REFSEQ1_V = #{FILE_REF1_V}
+		<if test="FILE_REF2_V != null and FILE_REF2_V != '' ">
+			AND	  CM_REFSEQ2_V = #{FILE_REF2_V}	
+		</if>
+		<if test="FILE_REF3_V != null and FILE_REF3_V != '' ">
+			AND	  CM_REFSEQ3_V = #{FILE_REF3_V}	
+		</if>
+	</select>
+
+</mapper>

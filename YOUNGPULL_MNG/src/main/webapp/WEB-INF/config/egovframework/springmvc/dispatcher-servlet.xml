@@ -53,9 +53,14 @@
 	<bean id="excelDown" class="egovframework.MNG.util.ExcelDownloadView"  /> -->
 	
 	<!-- jsonView 설정 -->
-	<!-- <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
-		<property name="contentType" value="application/json;charset-UTF-8" />
-	</bean> -->
+<!-- 	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/> -->
+
+	<bean id="jsonMapper" class="com.fasterxml.jackson.databind.ObjectMapper" />
+	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+		<property name="objectMapper" ref="jsonMapper" />
+	</bean>
+
+
 
     <!-- For Pagination Tag -->
     <bean id="imageRenderer" class="egovframework.common.cmmnHndlr.web.EgovImgPaginationRenderer"/>
