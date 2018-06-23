@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.MNG.SAMPLE.service.impl.SampleMapper">
+
+	<select id="SAMPLE_R" parameterType="egovMap" resultType="sampleVo">
+		SELECT *
+		FROM TB_SAMPLE
+		WHERE 1=1
+		<if test="search_val != null and search_val != '' ">
+			<choose>
+				<when test="schKey == 'schName' ">
+				   AND NAME_V LIKE '%${schVal}%' 
+				</when>
+				<when test="schKey == 'schId' ">
+				   AND ID_V LIKE '%${schVal}%' 
+				</when>
+				<otherwise>
+					AND ( 
+						   NAME_V LIKE '%${schVal}%' 
+						   OR ID_V LIKE '%${schVal}%'
+						 )
+				</otherwise>
+			</choose>
+		</if>
+		LIMIT ${STARTPAGE}, ${ENDPAGE}
+	</select>
+	
+	<select id="SAMPLE_CNT_R" parameterType="egovMap" resultType="int">
+		SELECT COUNT(*)
+		FROM TB_SAMPLE 
+	</select>
+	
+	<insert id="SAMPLE_CU"  parameterType="egovMap">
+		INSERT INTO TB_SAMPLE
+		(
+			SEQ_V	
+			NAME_V	
+			ID_V	
+			PWD_V	
+			FILE_SEQ_V	
+			REG_DT_D	
+			REG_ID_V	
+		)
+		VALUES
+		(
+			 #{seq_v}
+			,#{name_v}
+			,#{id_v}	
+			,#{pwd_v}	
+			,#{file_seq_v}	
+			,NOW()
+			,#{reg_id_v}	
+		)
+		
+		ON DUPLICATE KEY
+		 
+		UPDATE TB_SAMPLE SET
+			 NAME_V				=	#{name_v}
+			,ID_V				=	#{id_v}	
+			,PWD_V				=	#{pwd_v}	
+			,FILE_SEQ_V			=	#{file_seq_v}
+	</insert>
+	
+	<delete id="SMAPLE_D" parameterType="egovMap">
+		DELETE FROM TB_SAMPLE
+		WHERE SEQ_V = #{seq_v}
+	</delete>
+	
+</mapper>
