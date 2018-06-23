@@ -46,11 +46,11 @@
 
     <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="1"
 	    p:viewClass="org.springframework.web.servlet.view.JstlView"
-	    p:prefix="/WEB-INF/jsp" p:suffix=".jsp"/>
+	    p:prefix="/WEB-INF/jsp/egovframework" p:suffix=".jsp"/>
 	    
 	<!-- Excel 출력 설정 -->
-	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0" />
-	<bean id="excelDown" class="egovframework.MNG.util.ExcelDownloadView"  />
+	<!-- <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="2" />
+	<bean id="excelDown" class="egovframework.MNG.util.ExcelDownloadView"  /> -->
 	
 	<!-- jsonView 설정 -->
 	<!-- <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">

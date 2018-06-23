@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+body {background-color: #D4F4FA; width:100%; height:100%;font-family: 'Malgun Gothic'; margin:auto;}
+.logo{
+    font-size: 95px;
+    margin: auto;
+    color: rgba(0, 130, 153, 1);
+    text-align:center;
+    position:relative;
+    padding-top: 4%;
+    padding-right: 21%;
+}
+
+.login {
+		border:1px solid #3DB7CC;
+		width: 35%;
+	    height: 216px;
+	    margin: auto;
+	    text-align:center;
+	    position: absolute;
+	    top: 27%;
+	    left: 32%;
+}
+.title{
+    background-color: #008299;
+    color: #fff;
+    font-weight: bold;
+    height: 30px;
+    font-size: 20px;
+    vertical-align: middle;
+    padding: 12px 0px 13px 18px;
+    text-align: left;
+}
+.id {padding-left:12px; margin-left:15px;}
+.pass {padding-left:12px;}
+.input {width: 150px;height: 25px;border: 1px solid #3DB7CC;}
+.btn {
+    background-color: #3DB7CC;
+    text-align: center;
+    font-size: 20px;
+    height: 30px;
+    vertical-align: middle;
+    padding:15px 0px 6px 0px;
+    cursor: pointer;
+    text-decoration: none;
+    color:#fff;
+}

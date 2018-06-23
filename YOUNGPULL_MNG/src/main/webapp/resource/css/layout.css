@@ -1,0 +1,89 @@
+﻿@charset "utf-8";
+
+/* 
+===============================================================================================
+1.	버    전 : main.css
+2.	작 성 자 : 선종혁
+3.	작 성 일 : 2014. 06. 03
+4.	참    고 : 메인 스타일 정의
+===============================================================================================
+*/
+
+#wrap {width:1000px;margin:0 auto}
+#accessibility {position:absolute;left:0;top:0;z-index:1000;width:100%}
+#accessibility a {display:block;width:1px;height:1px;margin-bottom:-1px;overflow:hidden;text-align:center;color:#FFFFFF}
+#accessibility a:focus, #accessibility a:active {width:100%;height:auto;padding:5px 0;background-color:#3c8200}
+#header {position:relative;z-index:100;width:1000px;height:110px}
+#header h1 {position:absolute;left:0;top:40px;z-index:12;width:142px;height:57px;background:url(/resource/web_name/ksgra/img/common/img_logo.gif) no-repeat left top}
+#header h1 a {display:block;width:142px;height:57px}
+#header .top {width:990px;overflow:hidden}
+#header .top ul {float:right;padding:5px 0}
+#header .top ul li {float:left;padding:0 9px;background:url("/resource/web_name/ksgra/img/common/bullet01.gif") no-repeat right 5px}
+#header .top ul li.last {padding-right:0;background:none}
+#header .top ul li a {font-size:12px;font-weight:600;color:#ffffff}
+#header .top ul li a:hover {text-decoration:underline}
+#header .top ul li a:focus {text-decoration:underline}
+#header #gnb {position:absolute;left:0;top:29px;z-index:10;width:990px;height:20px;padding-top:33px;overflow:hidden}
+#header #gnb ul.mn_list {position:relative;float:right;width:650px;text-align:center}
+#header #gnb ul li.on {background:url(/resource/web_name/ksgra/img/common/icon_arrow.gif) no-repeat right 37px}
+#header #gnb ul li.on ul {border-right:0;background-color:#0652ab}
+#header #gnb ul li.on a {color:#ffffff}
+#header #gnb ul li ul {height:172px;border-right:1px solid #d9ddee}
+#header #gnb ul li.menu01, #header #gnb ul li.menu02, #header #gnb ul li.menu03, #header #gnb ul li.menu04, #header #gnb ul li.menu05 {float:left;width:130px}
+#header #gnb ul li p {position:absolute;left:-367px;top:36px}
+#header #gnb ul li.last {margin-right:0}
+#header #gnb ul li ul {padding-top:14px}
+#header #gnb ul li li {float:none;margin-bottom:4px}
+#header #gnb ul a {display:block;padding-bottom:30px;text-align:right}
+#header #gnb ul li.menu05 a {background:none}
+#header #gnb ul li li a {background:none !important;padding:0;border:0;letter-spacing:-1px;text-align:center;font-weight:600;color:#767a84}
+#header #gnb ul li li a:hover, #header #gnb ul li li a:focus {text-decoration:underline;color:#ffffff}
+#container .slogan {padding:49px 0 40px}
+#container .contents_box {width:1000px;padding-bottom:150px;background:url(/resource/web_name/ksgra/img/common/bg_sideLine.gif) repeat-y 163px bottom}
+#container .contents_box:after {clear:both;content:".";display:block;height:0;font-size:0}
+#container .contents_box #aside {float:left;width:176px;padding-top:22px}
+#container .contents_box #aside h2 {margin-bottom:30px;font-weight:900;font-size:23px;color:#0652ab}
+#container .contents_box #aside h2 span {display:block;font-weight:900;font-size:13px;color:#363535}
+#container .contents_box #aside li a {display:block;background:url(/resource/web_name/ksgra/img/common/bg_lnb_bullet.gif) no-repeat 6px 15px;font-weight:600;color:#5c5c5c}
+#container .contents_box #aside li a span {display:block;width:147px;padding:5px 0 5px 16px;border-bottom:1px solid #e5e5e5}
+#container .contents_box #aside li a:hover, #container .contents_box #aside li a:focus {background:url(/resource/web_name/ksgra/img/common/bg_lnb_on.gif) no-repeat right top #0652ab;color:#ffffff}
+#container .contents_box #aside li a.on {background:url(/resource/web_name/ksgra/img/common/bg_lnb_on.gif) no-repeat right top #0652ab;color:#ffffff}
+#container .contents_box #content {float:right;width:790px;padding:25px 0 0 34px}
+#container .contents_box #content .top {width:100%;margin-bottom:48px;overflow:hidden}
+#container .contents_box #content .top p {float:right;position:relative;top:12px;font-size:11px;color:#6F6F6F}
+#container .contents_box #content .top h3 {float:left;font-size:29px;font-weight:600;color:#2d2d2d}
+#container .contents_box #content .top img {vertical-align:middle}
+#container .contents_box #content .top_txt {margin-bottom:20px;line-height:24px;font-size:16px}
+#container .contents_box #content .top_txt em {font-weight:600;color:#ec7a00}
+#footer {padding-bottom:29px;background-color:#565656}
+#footer .banner {padding:6px 0;border-top:3px solid #727274;background-color:#ffffff}
+#footer .rolling_box {position:relative;width:1000px;margin:0 auto;overflow:hidden}
+#footer #bannerListBox {/*padding:11px 0 13px*/padding:3px 0;}
+#footer #bannerListBox ul {width:100%;overflow:hidden}
+#footer #bannerListBox ul li {float:left;width:131px}
+#footer #bannerListBox ul li a {display:block;text-align:center}
+#footer .rolling_box .rolling_btn {position:absolute;right:0;top:9px;width:58px}
+#footer .rolling_box .rolling_btn button {float:left}
+#footer .rolling_box .rolling_btn button span {position:absolute;left:-1000%;top:0;width:1px;height:1px;font-size:0;line-height:0;overflow:hidden}
+#footer .rolling_box .rolling_btn a {display:inline-block;margin-top:3px}
+#footer .rolling_box .rolling_btn .roll_prev {width:15px;height:13px;background:url("/resource/web_name/ksgra/img/common/btn_banner.gif") no-repeat 0 0}
+#footer .rolling_box .rolling_btn .roll_stop {width:15px;height:13px;background:url("/resource/web_name/ksgra/img/common/btn_banner.gif") no-repeat -15px 0}
+#footer .rolling_box .rolling_btn .roll_play {width:15px;height:13px;background:url("/resource/web_name/ksgra/img/common/btn_banner.gif") no-repeat -30px 0}
+#footer .rolling_box .rolling_btn .roll_next {width:13px;height:13px;background:url("/resource/web_name/ksgra/img/common/btn_banner.gif") no-repeat -45px 0}
+#footer .inner {position:relative;width:1000px;margin:0 auto;padding-top:25px}
+#footer .inner .addbox {padding-left:184px;font-weight:600}
+#footer .inner .addbox ul {width:100%;margin-bottom:4px;overflow:hidden}
+#footer .inner .addbox ul li {float:left;padding:0 8px 0 6px;background:url("/resource/web_name/ksgra/img/common/bullet01.gif") no-repeat right 5px}
+#footer .inner .addbox ul li.f {padding-left:0}
+#footer .inner .addbox ul li.l {background:none}
+#footer .inner .addbox ul li img {vertical-align:middle}
+#footer .inner .addbox ul li.face{background:none}
+#footer .inner .addbox ul li.tw{background:none;padding-left:0 !important}
+#footer .inner .addbox ul li.yt{background:none;padding-left:0 !important}
+#footer .inner .addbox ul li a {font-size:12px;font-weight:600;color:#e1e1e1}
+#footer .inner .addbox ul li a:hover {text-decoration:underline}
+#footer .inner .addbox ul li a:focus {text-decoration:underline}
+#footer .inner .addbox address {font-size:12px;color:#999999}
+#footer .inner .addbox address em {color:#418be2}
+#footer p {position:absolute;left:0;top:28px;width:163px;height:59px;background:url(/resource/web_name/ksgra/img/common/img_footer_logo.gif) no-repeat left top}
+#layer {position:absolute;left:0;top:110px;z-index:1;width:100%;height:0;background-color:#edf4fb}

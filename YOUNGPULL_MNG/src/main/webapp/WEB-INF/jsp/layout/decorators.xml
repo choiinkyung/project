@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<decorators defaultdir="/WEB-INF/jsp/layout/">
+
+	<excludes>
+		<pattern>/index.do</pattern>
+		<pattern>/index.jsp</pattern>
+		<pattern>/index.html</pattern>
+		<pattern>/*/popup/*</pattern>
+		<pattern>/*/*/popup/*</pattern>
+		<pattern>/nolayout/*</pattern>
+		<pattern>/ajax/*</pattern>
+		<pattern>/excel/*</pattern>
+		<pattern>/common/*</pattern>
+	</excludes> 
+
+	<!-- 팝업목록 -->	
+	<decorator name="managerPopupLayout" page="common/noLayout.jsp">
+		<pattern>/management/coupon/popup/memberPopup.do</pattern> 
+		<pattern>/management/member/popup/orderList.do</pattern> 
+	</decorator>
+	
+	<!-- 관리자 -->
+	<decorator name="managerLayout" page="MNG/defaultLayout.jsp">
+		<pattern>/mng/*</pattern> 
+	</decorator>
+	
+	 
+</decorators> 

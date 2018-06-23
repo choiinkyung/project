@@ -16,11 +16,11 @@ import egovframework.MNG.util.RequestUtil;
 import egovframework.MNG.util.paging.Page;
 
 @Controller
-@RequestMapping(value = "/sample/")
+@RequestMapping(value = "/mng/sample/")
 public class SampleCtrl {
 
 	
-	@Resource(name = "SampleService")
+	@Resource(name = "sampleSvc")
 	private SampleSvc sampleSvc;
 	
 	/**
@@ -34,15 +34,20 @@ public class SampleCtrl {
 	public String SAMPLE_R(ModelMap model, HttpServletRequest request) throws Exception {
 
 		Map paramMap = RequestUtil.process(request);
+		try {
+			Map pageMap = Page.PageSet(paramMap, 
+					sampleSvc.SAMPLE_CNT_R(paramMap), 10, 10);
+			
+			List list = sampleSvc.SAMPLE_R(pageMap);
+			System.out.println(">>>>>>>>list = " + list);
+			model.addAttribute("resultList", list);
+			model.addAttribute("resultMap", pageMap);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		
-		Map pageMap = Page.PageSet(paramMap, 
-				sampleSvc.SAMPLE_CNT_R(paramMap), 10, 10);
-		
-		List list = sampleSvc.SAMPLE_R(pageMap);
-		model.addAttribute("resultList", list);
-		model.addAttribute("resultMap", pageMap);
-		
-		return "/sample/sampleList";
+		return "/MNG/SAMPLE/sampleList";
 	}
 	
 	/**

@@ -25,6 +25,16 @@
 		<filter-name>HTMLTagFilter</filter-name>
 		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
+	<filter>
+	    <filter-name>sitemesh</filter-name>
+	    <filter-class>
+				com.opensymphony.module.sitemesh.filter.PageFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>sitemesh</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
     
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -59,16 +69,16 @@
 	</login-config>
     
 	<error-page>
-		<exception-type>java.lang.Throwable</exception-type>
-		<location>/common/error.jsp</location>
+	    <exception-type>java.lang.Throwable</exception-type>
+	    <location>/common/error_500.jsp</location>
 	</error-page>
 	<error-page>
-		<error-code>404</error-code>
-		<location>/common/error.jsp</location>
+	    <error-code>404</error-code>
+	    <location>/common/error_404.jsp</location>
 	</error-page>
 	<error-page>
-		<error-code>500</error-code>
-		<location>/common/error.jsp</location>
+	    <error-code>500</error-code>
+	    <location>/common/error_500.jsp</location>
 	</error-page>
     
 </web-app>

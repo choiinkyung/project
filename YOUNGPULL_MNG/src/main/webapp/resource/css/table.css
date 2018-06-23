@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+/* 
+===============================================================================================
+1.	버    전 : table.css
+2.	작 성 자 : 선종혁
+3.	작 성 일 : 2014. 06. 03
+4.	참    고 : 테이블 스타일 정의
+===============================================================================================
+*/
+
+/* 리스트 게시판 */
+.tb01 {width:100%;border-style:solid none none;border-width:3px 0 0;border-color:#5b5b5b}
+.tb01 thead th {padding:10px 0;border-style:none none solid;border-width:0 0 1px;border-color:#adadad;background-color:#fafbfd;color:#3d3d3d}
+.tb01 tbody th {padding:10px 0;border-style:none none solid;border-width:0 0 1px;border-color:#dbdbdb;background-color:#fafbfd;color:#3d3d3d}
+.tb01 tbody td {padding:10px 0;border-style:none none solid;border-width:0 0 1px;border-color:#dbdbdb;text-align:center}
+.tb01 tbody td.left {padding-left:15px;text-align:left}
+.tb01 tbody td a:hover {text-decoration:underline;color:#3f79b1}
+.tb01 tbody td a:focus {text-decoration:underline;color:#3f79b1}
+.tb01 tbody td strong {color:#333333}
+
+/* 쓰기 게시판 */
+.tb01_v {width:100%;border-style:solid none none;border-width:3px 0 0;border-color:#5b5b5b}
+.tb01_v thead th {padding:9px 0 9px 20px;border-style:none none solid;border-width:0 0 1px;border-color:#dbdbdb;background-color:#fafbfd;text-align:left;color:#3d3d3d}
+.tb01_v tbody th {padding:11px 0 11px 20px;border-style:none none solid;border-width:0 0 1px;border-color:#adadad;background:url("/resource/web_name/ksgra/img/common/bullet11.gif") no-repeat right 16px;text-align:left}
+.tb01_v tbody th.tb_center {padding:11px 0;border-width:1px;border-style:none solid solid none;border-color:#ababab;background:#f6f6f6;text-align:center;color:#404040}
+.tb01_v tbody td {padding:11px 15px;border-style:none none solid;border-width:0 0 1px;border-color:#adadad;text-align:left}
+.tb01_v tbody td select {height:21px;border:1px solid #cecece}
+.tb01_v tbody td textarea {width:100%;height:180px;border:1px solid #cecece;font-size:12px}
+.tb01_v tbody td a:hover {text-decoration:underline;color:#3f79b1}
+.tb01_v tbody td a:focus {text-decoration:underline;color:#3f79b1}
+.tb01_v tbody td input.input01 {width:173px;height:19px;border:1px solid #cecece}
+.tb01_v tbody td input.input02 {width:57px;height:19px;border:1px solid #cecece}
+.tb01_v tbody td input.input03 {width:100%;height:19px;border:1px solid #cecece} 
+.tb01_v tbody td input.input04 {width:85%;height:19px;border:1px solid #cecece}
+.tb01_v tbody td select.slt01 {width:53px}
+.tb01_v tbody td.txt {height:150px;padding-left:20px;vertical-align:top;text-align:left}
+.tb01_v tbody .bg_n {background:none}
+
+/* view 게시판 */
+.txt_view {font-size:12px}
+.txt_view h3 {padding:9px 0 9px 20px;border-top:3px solid #5b5b5b;border-bottom:1px solid #dbdbdb;background-color:#f4f5f8;font-weight:600;color:#3d3d3d}
+.txt_view dl {width:100%;border-bottom:1px solid #dbdbdb;overflow:hidden}
+.txt_view dl.dl_b {width:100%;border-bottom:1px solid #adadad;overflow:hidden}
+.txt_view dt {float:left;width:80px;padding:11px 0 11px 20px;background:url(/resource/web_name/ksgra/img/common/bullet02.gif) no-repeat right 16px;font-weight:600;color:#3d3d3d;text-align:left}
+.txt_view dd {float:left;width:251px;padding:11px 0 11px 20px}
+.txt_view dd a:hover {text-decoration:underline;color:#3f79b1}
+.txt_view dd a:focus {text-decoration:underline;color:#3f79b1}
+.txt_view div {padding:11px 0 110px 20px;border-bottom:1px solid #adadad}
+.prev_next {width:100%;overflow:hidden;font-size:12px}
+.prev_next dt {float:left;width:57px;padding:10px 0 10px 30px;border-bottom:1px solid #dbdbdb;font-weight:600;color:#3d3d3d}
+.prev_next dt.p {background:url(/resource/web_name/ksgra/img/common/bullet03.gif) no-repeat 15px 18px}
+.prev_next dt.n {background:url(/resource/web_name/ksgra/img/common/bullet04.gif) no-repeat 15px 18px}
+.prev_next dd {float:left;width:660px;padding:10px 0 10px 43px;border-bottom:1px solid #dbdbdb}
+.prev_next dd a:hover {text-decoration:underline;color:#3f79b1}
+.prev_next dd a:focus {text-decoration:underline;color:#3f79b1}
+.file {display:inline-block;padding-left:17px;background:url(/resource/web_name/ksgra/img/common/icon_boardFile.gif) no-repeat left 5px}
+
+/* table01 */
+.tb_style01 {width:100%;border-style:solid none none;border-width:3px;border-color:#515151}
+.tb_style01 thead th {padding:10px 0;border-style:none solid solid none;border-width:1px;border-color:#d5d5d5;background-color:#efefef;font-weight:600;color:#313131}
+.tb_style01 thead td {padding:10px 12px;border-style:none none solid none;border-width:1px;border-color:#d5d5d5}
+.tb_style01 tbody th {padding:10px 0;border-style:none solid solid none;border-width:1px;border-color:#d5d5d5;background-color:#efefef;font-weight:600;color:#313131}
+.tb_style01 tbody td {padding:10px 12px;border-style:none none solid none;border-width:1px;border-color:#d5d5d5}
+.tb_style01 tbody td .num {width:94px;height:24px;background:url(/resource/web_name/ksgra/img/member/btn_number.gif) no-repeat left top;vertical-align:middle}
+.tb_style01 tbody td .input01 {width:187px;height:25px;border:1px solid #d6d8d8}
+.tb_style01 tbody td .input02 {width:65px;height:25px;border:1px solid #d6d8d8}
+.tb_style01 tbody td .input03 {width:300px;height:25px;border:1px solid #d6d8d8}
+.tb_style01 tbody td .input04 {width:53px;height:25px;border:1px solid #d6d8d8}
+.tb_style01 tbody td .input05 {width:45px;height:25px;border:1px solid #d6d8d8}
+.tb_style01 tbody td .input06 {width:75px;height:25px;border:1px solid #d6d8d8}
+.tb_style01 tbody td .input100 {width:100%;height:25px;border:1px solid #d6d8d8}
+.tb_style01 tbody td select {height:25px;border:1px solid #d6d8d8}
+
+/* table02 */
+.tb_style02 {width:100%;border-style:solid none none;border-width:3px;border-color:#515151}
+.tb_style02 thead th {padding:12px 0;border-style:none solid solid none;border-width:1px;border-color:#d5d5d5;background-color:#efefef;font-weight:600;color:#313131}
+.tb_style02 tbody th {padding:12px 0;border-style:none solid solid none;border-width:1px;border-color:#d5d5d5;background-color:#efefef;font-weight:600;color:#313131}
+.tb_style02 tbody td {padding:10px 12px;border-style:none solid solid none;border-width:1px;border-color:#d5d5d5;text-align:center}
+.tb_style02 .last {border-right:0}
+.tb_style02 .left {text-align:left}
+
+/*갤러리*/
+.gal_style01{overflow:hidden}
+.gal_style01 > li{width:224px;margin:0 13px 20px 13px;border:1px solid #ddd;padding:5px;float:left;}
+.gal_style01 > li .thumb{margin-bottom:10px;}
+.gal_style01 > li .thumb img{width:100%;height:160px;}
+.gal_style01 > li .tit{margin-bottom:5px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+
+/* 검색 */
+.search01 {margin-bottom:20px;text-align:right}
+.search02 {width:100%;margin-bottom:20px;overflow:hidden}
+.search02 .l {float:left}
+.search02 .r {float:right}
+
+/* paging */
+.paging_box {position:relative;width:100%;margin-top:23px}
+.paging_box .btn {position:absolute;right:0;top:0}
+.paging {text-align:center}
+.paging strong {padding:3px 8px;color:#ffffff;background-color:#5b5b5b;border:1px solid #5b5b5b;text-decoration:underline}
+.paging a {padding:3px 8px;color:#666666;background-color:#ffffff;border:1px solid #e0e0e0}
+.paging a img {vertical-align:middle}
+.paging a:hover {padding:3px 8px;color:#ffffff;background-color:#5b5b5b;border:1px solid #5b5b5b;text-decoration:underline}
+.paging a:focus {padding:3px 8px;color:#ffffff;background-color:#5b5b5b;border:1px solid #5b5b5b;text-decoration:underline}
+.paging .prev1 {padding:0 0 0 0;border:none;background:none}
+.paging .prev1:hover {padding:0 0 0 0;border:none;background:none}
+.paging .prev1:focus {padding:0 0 0 0;border:none;background:none}
+.paging .prev2 {margin-right:10px;padding:0 0 0 0;border:none}
+.paging .prev2:hover {padding:0 0 0 0;border:none}
+.paging .prev2:focus {padding:0 0 0 0;border:none}
+.paging .next1 {margin-left:10px;padding:0 0 0 0;border:none}
+.paging .next1:hover {padding:0 0 0 0;border:none}
+.paging .next1:focus {padding:0 0 0 0;border:none}
+.paging .next2 {padding:0 0 0 0;border:none;background:none}
+.paging .next2:hover {padding:0 0 0 0;border:none;background:none}
+.paging .next2:focus {padding:0 0 0 0;border:none;background:none}
+.btn_form {margin-top:30px;text-align:right}

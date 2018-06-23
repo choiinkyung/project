@@ -1,0 +1,5 @@
+
+
+function getCommonCode(formId, codeId){
+	
+}

@@ -14,7 +14,7 @@ import egovframework.MNG.util.fileUtil.FileUtils;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 
-@Service("sampleService")
+@Service("sampleSvc")
 public class SampleSvcImpl extends EgovAbstractServiceImpl implements SampleSvc{
 	
 	@Resource(name="fileUtils")
@@ -29,6 +29,7 @@ public class SampleSvcImpl extends EgovAbstractServiceImpl implements SampleSvc{
 	@Override
 	public List SAMPLE_R(Map paramMap) throws Exception {
 		// TODO Auto-generated method stub
+		
 		return sampleMapper.SAMPLE_R(paramMap);
 	}
 
@@ -56,7 +57,7 @@ public class SampleSvcImpl extends EgovAbstractServiceImpl implements SampleSvc{
 				
 				if ("I".equals(dataStatus)) {
 					//등록일때만 신규 인덱스값 생성
-					paramMap.put("sampleSeq", sampleIndexService.getNextStringId());
+					paramMap.put("seq_v", sampleIndexService.getNextStringId());
 				}
 				sampleMapper.SAMPLE_CU(paramMap);
 			}else if ("D".equals(paramMap.get("dataStatus"))) {
