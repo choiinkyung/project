@@ -5,7 +5,7 @@ import com.sun.xml.internal.ws.developer.Serialization;
 import egovframework.MNG.COMM.service.CommonVO;
 
 @Serialization
-public class AdministratorVo extends CommonVO{
+public class AdminVo extends CommonVO{
 	
 	/*일련번호*/
 	private String seq_v;

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.json.simple.JSONObject;
 
-public interface AdministratorSvc {
+public interface AdminSvc {
 
 	/**
 	 * 샘플 목록 조회
@@ -13,7 +13,7 @@ public interface AdministratorSvc {
 	 * @return 샘플 리스트 조회 결과값
 	 * @throws Exception
 	 */
-	List SAMPLE_R(Map paramMap) throws Exception;
+	List ADMIN_R(Map paramMap) throws Exception;
 	
 	/**
 	 * 샘플 목록 카운트조회
@@ -21,7 +21,7 @@ public interface AdministratorSvc {
 	 * @return 샘플 카운트조획 결과값
 	 * @throws Exception
 	 */
-	int SAMPLE_CNT_R  (Map paramMap) throws Exception;
+	int ADMIN_CNT_R  (Map paramMap) throws Exception;
 	
 	/**
 	 * 샘플 상세조회
@@ -29,7 +29,7 @@ public interface AdministratorSvc {
 	 * @return
 	 * @throws Exception
 	 */
-	AdministratorVo SAMPLE_DTL_R(Map paramMap) throws Exception;
+	AdminVo ADMIN_DTL_R(Map paramMap) throws Exception;
 	
 	
 	/**
@@ -37,7 +37,7 @@ public interface AdministratorSvc {
 	 * @param paramMap
 	 * @throws Exception
 	 */
-	JSONObject SAMPLE_CUD (Map paramMap) throws Exception;
+	JSONObject ADMIN_CUD (Map paramMap) throws Exception;
 	
 	
 }

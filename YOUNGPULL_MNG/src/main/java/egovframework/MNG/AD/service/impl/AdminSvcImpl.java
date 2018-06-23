@@ -8,45 +8,43 @@ import javax.annotation.Resource;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
 
-import egovframework.MNG.AD.service.AdministratorSvc;
-import egovframework.MNG.AD.service.AdministratorVo;
+import egovframework.MNG.AD.service.AdminSvc;
+import egovframework.MNG.AD.service.AdminVo;
 import egovframework.MNG.util.fileUtil.FileUtils;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 
-@Service("administratorSvc")
-public class AdministratorSvcImpl extends EgovAbstractServiceImpl implements AdministratorSvc{
+@Service("adminSvc")
+public class AdminSvcImpl extends EgovAbstractServiceImpl implements AdminSvc{
 	
 	@Resource(name="fileUtils")
 	private FileUtils fileUtils;
 	
-	@Resource(name="sampleMapper") 
-	private AdministratorMapper administratorMapper; 
+	@Resource(name="adminMapper") 
+	private AdminMapper AdminMapper; 
 	
-	@Resource(name = "sampleIndexService")
-	private EgovIdGnrService sampleIndexService;
 
 	@Override
-	public List SAMPLE_R(Map paramMap) throws Exception {
+	public List ADMIN_R(Map paramMap) throws Exception {
 		// TODO Auto-generated method stub
 		
-		return administratorMapper.SAMPLE_R(paramMap);
+		return AdminMapper.ADMIN_R(paramMap);
 	}
 
 	@Override
-	public int SAMPLE_CNT_R(Map paramMap) throws Exception {
+	public int ADMIN_CNT_R(Map paramMap) throws Exception {
 		// TODO Auto-generated method stub
-		return administratorMapper.SAMPLE_CNT_R(paramMap);
+		return AdminMapper.ADMIN_CNT_R(paramMap);
 	}
 
 	@Override
-	public AdministratorVo SAMPLE_DTL_R(Map paramMap) throws Exception {
+	public AdminVo ADMIN_DTL_R(Map paramMap) throws Exception {
 		// TODO Auto-generated method stub
-		return administratorMapper.SAMPLE_DTL_R(paramMap);
+		return AdminMapper.ADMIN_DTL_R(paramMap);
 	}
 
 	@Override
-	public JSONObject SAMPLE_CUD(Map paramMap) throws Exception {
+	public JSONObject ADMIN_CUD(Map paramMap) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

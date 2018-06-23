@@ -11,36 +11,35 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import egovframework.MNG.AD.service.AdministratorSvc;
+import egovframework.MNG.AD.service.AdminSvc;
 import egovframework.MNG.util.RequestUtil;
 import egovframework.MNG.util.paging.Page;
 
 @Controller
 @RequestMapping(value = "/mng/admin/")
-public class AdministratorCtrl {
+public class AdminCtrl {
 
 	
 	@Resource(name = "adminSvc")
-	private AdministratorSvc administratorSvc;
+	private AdminSvc AdminSvc;
 	
 	/**
 	 * 샘플 목록조회
 	 * @param model
 	 * @param request
+	 * 
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/adminList.do")
-	public String SAMPLE_R(ModelMap model, HttpServletRequest request) throws Exception {
+	public String ADMIN_R(ModelMap model, HttpServletRequest request) throws Exception {
 
 		Map paramMap = RequestUtil.process(request);
-		System.out.println(">>>>>>>>paramMap = " + paramMap);
 		try {
 			Map pageMap = Page.PageSet(paramMap, 
-					administratorSvc.SAMPLE_CNT_R(paramMap), 10, 10);
+					AdminSvc.ADMIN_CNT_R(paramMap), 10, 10);
 			
-			List list = administratorSvc.SAMPLE_R(pageMap);
-			System.out.println(">>>>>>>>list = " + list);
+			List list = AdminSvc.ADMIN_R(pageMap);
 			model.addAttribute("resultList", list);
 			model.addAttribute("resultMap", pageMap);
 		} catch (Exception e) {
@@ -59,12 +58,12 @@ public class AdministratorCtrl {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/adminForm.do")
-	public String SAMPLE_DTL_R(ModelMap model, HttpServletRequest request) throws Exception {
+	public String ADMIN_DTL_R(ModelMap model, HttpServletRequest request) throws Exception {
 		
 		Map paramMap = RequestUtil.process(request);
 		try {
 			if ("U".equals(paramMap.get("dataStatus"))) {
-				model.addAttribute("sample", administratorSvc.SAMPLE_DTL_R(paramMap));
+				model.addAttribute("sample", AdminSvc.ADMIN_DTL_R(paramMap));
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -81,11 +80,11 @@ public class AdministratorCtrl {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/ADProc.do")
-	public JSONObject SAMPLE_CU(ModelMap model, HttpServletRequest request) throws Exception {
+	public JSONObject ADMIN_CU(ModelMap model, HttpServletRequest request) throws Exception {
 		
 		Map paramMap = RequestUtil.process(request);
 		
-		return administratorSvc.SAMPLE_CUD(paramMap);
+		return AdminSvc.ADMIN_CUD(paramMap);
 	}
 	
 	
