@@ -16,11 +16,11 @@ import com.sun.xml.internal.ws.developer.Serialization;
 public class CommonVO {
 
 	/** 등록일 */
-	private String reg_dtm_d;
+	private String reg_dt_d;
 	/** 등록아이디 */
 	private String reg_id_v;
 	/** 수정일 */
-	private String up_dtm_d;
+	private String up_dt_d;
 	/** 수정아이디 */
 	private String up_id_v;
 	/** 삭제여부 */
@@ -137,18 +137,8 @@ public class CommonVO {
 	public void setSearch_val(String search_val) {
 		this.search_val = search_val;
 	}
-	/**
-	 * @return the reg_dtm_d
-	 */
-	public String getReg_dtm_d() {
-		return reg_dtm_d;
-	}
-	/**
-	 * @param reg_dtm_d the reg_dtm_d to set
-	 */
-	public void setReg_dtm_d(String reg_dtm_d) {
-		this.reg_dtm_d = reg_dtm_d;
-	}
+
+	
 	/**
 	 * @return the reg_id_v
 	 */
@@ -161,18 +151,8 @@ public class CommonVO {
 	public void setReg_id_v(String reg_id_v) {
 		this.reg_id_v = reg_id_v;
 	}
-	/**
-	 * @return the up_dtm_d
-	 */
-	public String getUp_dtm_d() {
-		return up_dtm_d;
-	}
-	/**
-	 * @param up_dtm_d the up_dtm_d to set
-	 */
-	public void setUp_dtm_d(String up_dtm_d) {
-		this.up_dtm_d = up_dtm_d;
-	}
+
+
 	/**
 	 * @return the up_id_v
 	 */
@@ -244,6 +224,18 @@ public class CommonVO {
 	 */
 	public void setNext_seq_n(String next_seq_n) {
 		this.next_seq_n = next_seq_n;
+	}
+	public String getReg_dt_d() {
+		return reg_dt_d;
+	}
+	public void setReg_dt_d(String reg_dt_d) {
+		this.reg_dt_d = reg_dt_d;
+	}
+	public String getUp_dt_d() {
+		return up_dt_d;
+	}
+	public void setUp_dt_d(String up_dt_d) {
+		this.up_dt_d = up_dt_d;
 	}
 	
 	

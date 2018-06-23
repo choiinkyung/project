@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.MNG.SI.service.impl.SiteMapper">
+	
+	<sql id="searchSiteWhere">
+		<if test="shText != null and shText != ''">
+			AND SI_DNAME_V LIKE '%${shText}%' 
+		</if>
+		<if test="shSdate !=null and shSdate != '' and shEdate !=null and shEdate != ''" >
+			<![CDATA[ AND REG_DT_D >=  #{shSdate} AND REG_DT_D <= #{shEdate}]]>
+			
+		</if>
+	</sql> 
+	
+	<!-- 사이트 관리 리스트 -->
+	<select id="SITE_R" parameterType="egovMap" resultType="siteVo">
+		SELECT SI_DADDR_V,
+			SI_DNAME_V,
+			SI_DSITE_V,
+			SI_DENDDT_V,
+			TO_DAYS(SI_DENDDT_V) - TO_DAYS(now()) AS USE_DAYS,
+			SI_DID_V,
+			SI_DPWD_V,
+			SI_HADDR_V,
+			SI_HID_V,
+			SI_HPWD_V,
+			SI_HENDDT_V,
+			SI_TEXT_T,
+			date_format(REG_DT_D,'%Y-%m-%d') AS REG_DT_D,
+			REG_ID_V
+		FROM SI_SITE_MNG
+		WHERE 1=1
+		<include refid="searchSiteWhere" />
+		LIMIT ${STARTPAGE}, ${ENDPAGE}
+	</select>
+
+	<select id="SITE_CNT_R" parameterType="egovMap" resultType="int">
+		SELECT COUNT(*)
+		FROM SI_SITE_MNG 
+		WHERE 1=1
+		<include refid="searchSiteWhere" />
+	</select>
+	<!-- 사이트 등록 -->
+	<insert id="SITE_C" parameterType="egovMap">
+		INSERT INTO SI_SITE_MNG
+			(
+			SI_DADDR_V,
+			SI_DNAME_V,
+			SI_DSITE_V,
+			SI_DENDDT_V,
+			SI_DID_V,
+			SI_DPWD_V,
+			SI_HADDR_V,
+			SI_HID_V,
+			SI_HPWD_V,
+			SI_HENDDT_V,
+			SI_TEXT_T,
+			REG_DT_D,
+			REG_ID_V)
+		VALUES(
+			#{si_daddr_v},
+			#{si_dname_v},
+			#{si_dsite_v},
+			#{si_denddt_v},
+			#{si_did_v},
+			#{si_dpwd_v},
+			#{si_haddr_v},
+			#{si_hid_v},
+			#{si_hpwd_v},
+			#{si_henddt_v},
+			#{si_text_t},
+			NOW(),
+			#{reg_id_v}
+			
+			)
+	</insert>
+	
+	<!-- 사이트 삭제 -->
+	<delete id="SITE_D" parameterType="egovMap">
+		 delete from SI_SITE_MNG where SI_DADDR_V = #{si_daddr_v}
+	</delete>
+	
+	<!-- 사이트 중복 체크 -->
+	<select id="SITE_CK_R" parameterType="egovMap" resultType="int">
+		 select count(SI_DADDR_V) from SI_SITE_MNG where SI_DADDR_V = #{si_daddr_v}
+	</select>
+	
+	<update id="SITE_U" parameterType="egovMap">
+		 UPDATE SI_SITE_MNG SET 
+		 	UPT_DT_D = NOW(),
+		 	UPT_ID_V ='' 
+		 	<if test="si_dname_v != null and si_dname_v != ''">
+		 		,SI_DNAME_V = #{si_dname_v}
+		 	</if>
+		 	<if test="si_dsite_v != null and si_dsite_v != ''">
+		 		,SI_DSITE_V = #{si_dsite_v}
+		 	</if>
+		 	<if test="si_denddt_v != null and si_denddt_v != ''">
+		 		,SI_DENDDT_V = #{si_denddt_v}
+		 	</if>
+		 	<if test="si_haddr_v != null and si_haddr_v != ''">
+		 		,SI_HADDR_V = #{si_haddr_v}
+		 	</if>
+		 	<if test="si_henddt_v != null and si_henddt_v != ''">
+		 		,si_henddt_v = #{si_henddt_v}
+		 	</if>
+		 	<if test="si_text_t != null and si_text_t != ''">
+		 		,SI_TEXT_T = #{si_text_t}
+		 	</if>
+		 WHERE SI_DADDR_V = #{si_daddr_v}
+	</update>
+
+</mapper>

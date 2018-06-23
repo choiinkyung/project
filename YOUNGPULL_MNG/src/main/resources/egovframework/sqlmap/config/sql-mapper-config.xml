@@ -9,5 +9,8 @@
 		<typeAlias alias="sampleVo" type="egovframework.MNG.SAMPLE.service.SampleVo"/>
 		<!-- 공통게시판 -->
 		<typeAlias alias="bbsInfoVo" type="egovframework.MNG.BBS.service.M_BbsInfoVO"/>
+		<!-- 사이트 관리 -->
+		<typeAlias alias="siteVo" type="egovframework.MNG.SI.service.SiteVo"/>
+		
     </typeAliases>
 </configuration>
