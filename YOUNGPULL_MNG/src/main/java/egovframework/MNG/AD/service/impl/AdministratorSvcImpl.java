@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import egovframework.MNG.AD.service.AdministratorSvc;
 import egovframework.MNG.AD.service.AdministratorVo;
-import egovframework.MNG.AD.service.administratorVo;
 import egovframework.MNG.util.fileUtil.FileUtils;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
