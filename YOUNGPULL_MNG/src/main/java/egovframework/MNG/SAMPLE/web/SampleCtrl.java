@@ -10,10 +10,12 @@ import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import egovframework.MNG.SAMPLE.service.SampleSvc;
 import egovframework.MNG.util.RequestUtil;
 import egovframework.MNG.util.paging.Page;
+import egovframework.common.SettingKey;
 
 @Controller
 @RequestMapping(value = "/mng/sample/")
@@ -30,7 +32,7 @@ public class SampleCtrl {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/sampleList.do")
+	@RequestMapping(value = "sampleList.do")
 	public String SAMPLE_R(ModelMap model, HttpServletRequest request) throws Exception {
 
 		Map paramMap = RequestUtil.process(request);
@@ -58,7 +60,7 @@ public class SampleCtrl {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/sampleForm.do")
+	@RequestMapping(value = "sampleForm.do")
 	public String SAMPLE_DTL_R(ModelMap model, HttpServletRequest request) throws Exception {
 		
 		Map paramMap = RequestUtil.process(request);
@@ -66,6 +68,7 @@ public class SampleCtrl {
 			if ("U".equals(paramMap.get("dataStatus"))) {
 				model.addAttribute("sample", sampleSvc.SAMPLE_DTL_R(paramMap));
 			}
+			model.addAttribute("resultMap", paramMap);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -80,12 +83,19 @@ public class SampleCtrl {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/sampleProc.do")
-	public JSONObject SAMPLE_CU(ModelMap model, HttpServletRequest request) throws Exception {
+	@RequestMapping(value = "sampleProc.json")
+	public String SAMPLE_CU(ModelMap model, HttpServletRequest request) throws Exception {
 		
 		Map paramMap = RequestUtil.process(request);
-		
-		return sampleSvc.SAMPLE_CUD(paramMap);
+		JSONObject json = new JSONObject();
+		try {
+			json = sampleSvc.SAMPLE_CUD(paramMap);
+			model.addAttribute("returnData", json);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} 
+		return SettingKey.JSON_VIEW;
 	}
 	
 	

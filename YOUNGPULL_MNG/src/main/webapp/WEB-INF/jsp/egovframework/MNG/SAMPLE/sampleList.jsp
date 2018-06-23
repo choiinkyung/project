@@ -3,9 +3,62 @@
 <%@ taglib prefix="fn"      uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="ui"     uri="http://egovframework.gov/ctl/ui"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	//검색
+	$("#jsSearch").click(function(){
+		$("#searchForm").on("submit", function(event) {
+			event.preventDefault();
+		});
+	});
+  
+	//초기화
+	$("#jsClear").click(function(){
+		$("#searchForm").submit(function(event) {
+			event.preventDefault();
+			$("#searchForm").reset();
+		});
+	});
+	
+	//등록폼이동
+	$("#jsForm").click(function(){
+		$("#dataStatus").val("I");
+		$("#searchForm").attr("action", "/mng/sample/sampleForm.do");
+        $("#searchForm").submit();  
+	});
+	
+	//엑셀다운로드
+	$("#jsExcelDown").click(function(){
+		$("#searchForm").submit(function(event) {
+			$("#searchForm").attr("action", "/mng/sample/excel/excelDown.do");
+			event.preventDefault();
+	   });
+	});
+	
+	$("#jsView").click(function(){
+		$("#dataStatus").val("U");
+		$("#seq_v").val($(this).attr("seq_v"));
+		$("#searchForm").attr("action", "/mng/sample/sampleForm.do");
+        $("#searchForm").submit();  
+	});
+	
+});
+	
+    
+//페이징처리
+function linkPage(pageNo){
+	$("#pageNo").val(pageNo);
+    $("#searchForm").submit();
+}
+
+</script>
+
 </head>
 
 <body>
@@ -14,7 +67,8 @@
 	<div class="location">Main &gt;운영관리&gt; <strong>샘플</strong></div>
 	<form name="searchForm" id="searchForm" method="post" action="/mng/sample/sampleList.do">
 	<input type="hidden" name="pageNo" value="${resultMap.pageNo }">
-	<input type="text" name="dataStatus" id="dataStatus">
+	<input type="hidden" name="dataStatus" id="dataStatus">
+	<input type="hidden" name="seq_v" id="seq_v">
 		
 		<div class="searchBox" style="padding:3%;">
 			<dl class="kind">
@@ -60,14 +114,13 @@
 					<td><c:out value="${resultMap.paginationInfo.totalRecordCount+1 - ((resultMap.pageNo-1) * resultMap.paginationInfo.recordCountPerPage + status.count)}"/></td>
 					<td></td>
 					<td>
-						<a href="javascript:jsView('<c:out value="${list.bi_seq_n }" />');">
+						<a href="#go" id="jsView" seq_v=${list.seq_v }>
 							<c:if test="${list.new_data eq 'NEW' }"><img src="/resource/management/images/new.gif" /></c:if>
-							<c:out value="${list.bi_title_v }" />
+							<c:out value="${list.name_v }" />
 						</a>
 					</td>
 					<td>
-						<c:if test="${list.bi_openYn_c eq 'Y' }">공개</c:if>
-						<c:if test="${list.bi_openYn_c eq 'N' or empty list.bi_openYn_c}">비공개</c:if>
+						<c:out value="${list.id_v }" />
 					</td>
 					<td><c:out value="${list.reg_dt_d}" /></td> 
 					
@@ -99,52 +152,3 @@
 	</div>
 </section>
 </body>
-
-<script type="text/javascript">
-$(function(){
-	//검색
-	$("#jsSearch").click(function(){
-		$("#searchForm").on("submit", function(event) {
-			event.preventDefault();
-		});
-	});
-  
-	//초기화
-	$("#jsClear").click(function(){
-		$("#searchForm").on("submit", function(event) {
-			$("#searchForm").reset();
-			event.preventDefault();
-		});
-	});
-	
-	//등록폼이동
-	$("#jsForm").click(function(){
-		$("#searchForm").on("submit", function(event) {
-			alert("dddddddddddddd");
-			$("#dataStatus").val("I");
-			$("#searchForm").attr("action", "/mng/sample/sampleForm.do");
-			event.preventDefault();
-	   });
-	});
-	
-	//엑셀다운로드
-	$("#jsExcelDown").click(function(){
-		$("#searchForm").on("submit", function(event) {
-			$("#searchForm").attr("action", "/mng/sample/excel/excelDown.do");
-			event.preventDefault();
-	   });
-	});
-	
-});
-	
-    
-//페이징처리
-function linkPage(pageNo){
- //페이지를 다시 불러오는 것을 방지하기 위해 preventDefault()를 호출
-   $("#searchForm").on("submit", function(event) {
-      event.preventDefault();
-      $("#pageNo").val(pageNo);
-   });
-}
-
-</script>

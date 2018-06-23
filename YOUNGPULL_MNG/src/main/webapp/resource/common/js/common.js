@@ -6,6 +6,7 @@
 4.	참   고 : 공통 스크립트
 ===============================================================================================
 */
+
 /**
  * 텍스트 박스 다음 포커스 이동
  * obj_id : this.id
@@ -107,5 +108,37 @@ function fileCheck( file, size, img_width, img_height ) {
         return false;
     }*/
     return true;
+}
+
+
+/**
+ * ajax 저장처리
+ * @param formId
+ * @param url
+ * @returns
+ */
+
+function saveData(formId, url, returnFnc) {
+	$.ajax({
+		 url : url
+		,type:"post"
+		,data : $("#" + formId).serialize()
+		,dataType : "json"
+		,success:function(data){
+			console.log(data);
+			if (data.result == "SUCCESS"){
+				alert(data.returnMsg);
+				$("#" + returnFnc).click();
+			}else if (data.result == "NULL"){
+				alert(data.returnMsg);
+			}else if (data.result == "FAIL"){
+				alert(data.returnMsg);
+			}
+		}
+		,error : function(data) {
+			console.log("err");
+			alert(data.returnMsg);
+		}
+	})
 }
 
