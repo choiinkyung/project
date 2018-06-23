@@ -1,11 +1,11 @@
-package egovframework.MNG.SAMPLE.service;
+package egovframework.MNG.AD.service;
 
 import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
 
-public interface SampleSvc {
+public interface AdministratorSvc {
 
 	/**
 	 * 샘플 목록 조회
@@ -29,7 +29,7 @@ public interface SampleSvc {
 	 * @return
 	 * @throws Exception
 	 */
-	SampleVo SAMPLE_DTL_R(Map paramMap) throws Exception;
+	AdministratorVo SAMPLE_DTL_R(Map paramMap) throws Exception;
 	
 	
 	/**

@@ -1,13 +1,13 @@
-package egovframework.MNG.SAMPLE.service.impl;
+package egovframework.MNG.AD.service.impl;
 
 import java.util.List;
 import java.util.Map;
 
-import egovframework.MNG.SAMPLE.service.SampleVo;
+import egovframework.MNG.AD.service.AdministratorVo;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 
-@Mapper ("sampleMapper")
-public interface SampleMapper {
+@Mapper ("adminMapper")
+public interface AdministratorMapper {
 
 	/**
 	 * 샘플 목록 조회
@@ -31,7 +31,7 @@ public interface SampleMapper {
 	 * @return
 	 * @throws Exception
 	 */
-	SampleVo SAMPLE_DTL_R(Map paramMap) throws Exception;
+	AdministratorVo SAMPLE_DTL_R(Map paramMap) throws Exception;
 	
 	/**
 	 * 샘플 저장 및 수정
