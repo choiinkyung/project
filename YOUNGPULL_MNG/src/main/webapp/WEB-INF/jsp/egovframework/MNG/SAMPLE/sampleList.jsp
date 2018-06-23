@@ -7,36 +7,35 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-//페이징
 $(document).ready(function(){
 	//검색
 	$("#jsSearch").click(function(){
-		$("#dataForm").on("submit", function(event) {
+		$("#searchForm").on("submit", function(event) {
 			event.preventDefault();
 		});
 	});
   
 	//초기화
 	$("#jsClear").click(function(){
-		$("#dataForm").on("submit", function(event) {
+		$("#searchForm").on("submit", function(event) {
 			event.preventDefault();
-			$("#dataForm").reset();
+			$("#searchForm").reset();
 		});
 	});
 	
 	//등록폼이동
-	$("#jsInsertForm").click(function(){
-		$("#dataForm").on("submit", function(event) {
+	$("#jsForm").click(function(){
+		$("#searchForm").on("submit", function(event) {
 			event.preventDefault();
-			$("#dataForm").attr("action", "/MNG/sample/sampleForm.do");
+			$("#searchForm").attr("action", "/mng/sample/sampleForm.do");
 	   });
 	});
 	
 	//엑셀다운로드
 	$("#jsExcelDown").click(function(){
-		$("#dataForm").on("submit", function(event) {
+		$("#searchForm").on("submit", function(event) {
 			event.preventDefault();
-			$("#dataForm").attr("action", "/MNG/sample/excel/excelDown.do");
+			$("#searchForm").attr("action", "/mng/sample/excel/excelDown.do");
 	   });
 	});
    
@@ -47,7 +46,7 @@ $(document).ready(function(){
 //페이징처리
 function linkPage(pageNo){
  //페이지를 다시 불러오는 것을 방지하기 위해 preventDefault()를 호출
-   $("#dataForm").on("submit", function(event) {
+   $("#searchForm").on("submit", function(event) {
       event.preventDefault();
       $("#pageNo").val(pageNo);
    });
@@ -60,7 +59,7 @@ function linkPage(pageNo){
 <section id="content">
 	<h1>샘플 - 목록</h1>
 	<div class="location">Main &gt;운영관리&gt; <strong>샘플</strong></div>
-	<form name="searchForm" method="post" action="/MNG/sample/sampleList.do">
+	<form name="searchForm" method="post" action="/mng/sample/sampleList.do">
 	<input type="hidden" name="pageNo" value="${resultMap.pageNo }">
 	<input type="hidden" name="dataStatus" id="dataStatus">
 		
@@ -142,7 +141,7 @@ function linkPage(pageNo){
 	
 	<div class="btnGroupWrap">
 		<div class="right">
-			<button onclick="jsInsertForm();return false;">등록</button>
+			<button id="jsForm">등록</button>
 		</div>
 	</div>
 </section>

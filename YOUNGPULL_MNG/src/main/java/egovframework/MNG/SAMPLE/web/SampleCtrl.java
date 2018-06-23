@@ -64,7 +64,7 @@ public class SampleCtrl {
 		if ("U".equals(paramMap.get("dataStatus"))) {
 			model.addAttribute("sample", sampleSvc.SAMPLE_DTL_R(paramMap));
 		}
-		return "/sample/sampleForm";
+		return "/MNG/SAMPLE/sampleForm";
 	}
 	
 	/**
