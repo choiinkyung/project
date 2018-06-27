@@ -13,7 +13,7 @@ import com.sun.xml.internal.ws.developer.Serialization;
  *
  */
 @Serialization
-public class CommonVO {
+public class CommonVo {
 
 	/** 등록일 */
 	private String reg_dt_d;
@@ -29,14 +29,6 @@ public class CommonVO {
 	private String search_key;
 	/** 검색 값 */
 	private String search_val;
-	/** 코드명 */
-	private String code_name;
-	/** 코드번호 */
-	private String code_no;
-	/** 코드명 */
-	private String code_name_v;
-	/** 코드번호 */
-	private String code_mcode_v;
 	/** 이전글 번호 */
 	private String prev_seq_n;
 	/** 다음글 번호 */
@@ -47,9 +39,49 @@ public class CommonVO {
 	private String page_number;
 	/** sms수신여부 */
 	private String mem_getNews_c;
+	/** 코드명 */
+	private String code_name;
+	/** 코드번호 */
+	private String code_id_v;
+	/** 코드명 */
+	private String code_name_v;
+	/** 참조코드1 */
+	private String code_ref1_v;
+	/** 참조코드2 */
+	private String code_ref2_v;
+	/** 참조코드3 */
+	private String code_ref3_v;
+	/** 참조코드4 */
+	private String code_ref4_v;
+	/** 참조코드5 */
+	private String code_ref5_v;
+	/** 상위코드명 */
+	private String code_upName_v;
+	/** 상위코드번호 */
+	private String code_upId_v;
+	/** 코드정렬순서 */
+	private String code_order_n;
 	
 	
 	
+	public String getCode_upName_v() {
+		return code_upName_v;
+	}
+	public void setCode_upName_v(String code_upName_v) {
+		this.code_upName_v = code_upName_v;
+	}
+	public String getCode_upId_v() {
+		return code_upId_v;
+	}
+	public void setCode_upId_v(String code_upId_v) {
+		this.code_upId_v = code_upId_v;
+	}
+	public String getCode_order_n() {
+		return code_order_n;
+	}
+	public void setCode_order_n(String code_order_n) {
+		this.code_order_n = code_order_n;
+	}
 	/**
 	 * @return the mem_getnews_c
 	 */
@@ -89,18 +121,6 @@ public class CommonVO {
 	/**
 	 * @return the man_id_v
 	 */
-	/**
-	 * @return the code_mcode_v
-	 */
-	public String getCode_mcode_v() {
-		return code_mcode_v;
-	}
-	/**
-	 * @param code_mcode_v the code_mcode_v to set
-	 */
-	public void setCode_mcode_v(String code_mcode_v) {
-		this.code_mcode_v = code_mcode_v;
-	}
 	/**
 	 * @return the code_name_v
 	 */
@@ -190,18 +210,6 @@ public class CommonVO {
 		this.code_name = code_name;
 	}
 	/**
-	 * @return the code_no
-	 */
-	public String getCode_no() {
-		return code_no;
-	}
-	/**
-	 * @param code_no the code_no to set
-	 */
-	public void setCode_no(String code_no) {
-		this.code_no = code_no;
-	}
-	/**
 	 * @return the prev_seq_n
 	 */
 	public String getPrev_seq_n() {
@@ -236,6 +244,42 @@ public class CommonVO {
 	}
 	public void setUp_dt_d(String up_dt_d) {
 		this.up_dt_d = up_dt_d;
+	}
+	public String getCode_id_v() {
+		return code_id_v;
+	}
+	public void setCode_id_v(String code_id_v) {
+		this.code_id_v = code_id_v;
+	}
+	public String getCode_ref1_v() {
+		return code_ref1_v;
+	}
+	public void setCode_ref1_v(String code_ref1_v) {
+		this.code_ref1_v = code_ref1_v;
+	}
+	public String getCode_ref2_v() {
+		return code_ref2_v;
+	}
+	public void setCode_ref2_v(String code_ref2_v) {
+		this.code_ref2_v = code_ref2_v;
+	}
+	public String getCode_ref3_v() {
+		return code_ref3_v;
+	}
+	public void setCode_ref3_v(String code_ref3_v) {
+		this.code_ref3_v = code_ref3_v;
+	}
+	public String getCode_ref4_v() {
+		return code_ref4_v;
+	}
+	public void setCode_ref4_v(String code_ref4_v) {
+		this.code_ref4_v = code_ref4_v;
+	}
+	public String getCode_ref5_v() {
+		return code_ref5_v;
+	}
+	public void setCode_ref5_v(String code_ref5_v) {
+		this.code_ref5_v = code_ref5_v;
 	}
 	
 	

@@ -1,8 +1,8 @@
 package egovframework.MNG.BBS.service;
 
-import egovframework.MNG.COMM.service.CommonVO;
+import egovframework.MNG.COMM.service.CommonVo;
 
-public class M_BbsInfoVO extends CommonVO{
+public class M_BbsInfoVO extends CommonVo{
 
 	/** 게시글번호 */
 	private String bi_seq_n;

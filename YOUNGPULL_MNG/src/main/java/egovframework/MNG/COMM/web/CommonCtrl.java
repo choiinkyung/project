@@ -12,23 +12,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.RequestContextUtils;
 
-import egovframework.MNG.COMM.service.CommonService;
+import egovframework.MNG.COMM.service.CommonSvc;
 import egovframework.MNG.util.RequestUtil;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import egovframework.common.SettingKey;
 
 @Controller
-public class CommonController {
+public class CommonCtrl {
 
-	@Resource(name="commonService")
-	private CommonService commonService;
+	@Resource(name="commonSvc")
+	private CommonSvc commonSvc;
 	
 	/**
 	 * 파일 다운로드
@@ -41,7 +41,7 @@ public class CommonController {
 		
 		Map paramMap = RequestUtil.process(request);
 		
-	    Map<String,Object> map = commonService.selectFileView(paramMap);
+	    Map<String,Object> map = commonSvc.selectFileView(paramMap);
 
 	    String storedFileName = (String)map.get("storedFileName");
 	    String originalFileName = (String)map.get("originalFileName");
@@ -83,10 +83,80 @@ public class CommonController {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset-utf-8");
 		try {
-			commonService.ckeditorImageUpload(request, response, upload);
+			commonSvc.ckeditorImageUpload(request, response, upload);
 		} catch (IOException e) {
 			e.printStackTrace();
 			e.getMessage();
 		}
 	}
+	
+	@RequestMapping(value = "/mng/common/code/codeList.do")
+	public String COMMON_CODE_R(ModelMap model, HttpServletRequest request) throws Exception {
+		Map paramMap = RequestUtil.process(request);
+		model.addAttribute("resultMap", paramMap);
+		return "/common/CODE/codeList";
+	}
+	
+	/**
+	 * 공통코드 조회
+	 * @param model
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/code/codeList.json")
+	public String COMMON_CODEJSON_R(ModelMap model, HttpServletRequest request) throws Exception {
+		Map paramMap = RequestUtil.process(request);
+		try {
+			model.addAttribute("returnData", commonSvc.COMMON_CODE_R(paramMap));
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return SettingKey.JSON_VIEW;
+	}
+	
+	/**
+	 * 코드 등록/수정/삭제 처리
+	 * @param model
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/code/codeProc.json")
+	public String SAMPLE_CU(ModelMap model, HttpServletRequest request) throws Exception {
+		
+		Map paramMap = RequestUtil.process(request);
+		JSONObject json = new JSONObject();
+		try {
+			json = commonSvc.COMMON_CODE_CUD(paramMap);
+			model.addAttribute("returnData", json);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} 
+		return SettingKey.JSON_VIEW;
+	}
+	
+	/**
+	 * 공통코드 및 사이트 조회
+	 * @param model
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/code/COMMON_SITECODE_R.json")
+	public String COMMON_SITECODE_R(ModelMap model, HttpServletRequest request) throws Exception {
+		Map paramMap = RequestUtil.process(request);
+		try {
+			model.addAttribute("returnData", commonSvc.COMMON_SITECODE_R(paramMap));
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return SettingKey.JSON_VIEW;
+	}
+	
+	
 }

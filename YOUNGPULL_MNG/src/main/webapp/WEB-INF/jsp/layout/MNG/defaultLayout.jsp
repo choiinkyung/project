@@ -42,17 +42,18 @@
 			<h1>Navigation</h1>
 			<a href="#" class="btnMenu">메뉴</a>
 			<ul>
-				<li class="menu1 on"><a href="#">회원관리</a>
+				<li class="menu1 on"><a href="/mng/me/member/memberList.do">회원관리</a>
 					<div class="subBox">
-						<a href="#" class="on">등록회원관리</a>
+						<a href="/mng/me/member/memberList.do" class="on">등록회원관리</a>
 						<a href="#" class="">탈퇴회원관리</a>
 					</div>
 				</li>
 				<li class="menu8"><a href="#">운영자관리</a>
 					<div class="subBox">
-						<a href="#" class="#">운영자관리</a>
-						<a href="#" class="#">공통코드관리</a>
-						<a href="#" class="#">샘플목록</a>
+						<a href="/mng/site/siteList.do" class="#">사이트관리</a>
+						<a href="/mng/admin/adminList.do" class="#">운영자관리</a>
+						<a href="/mng/common/code/codeList.do" class="#">공통코드관리</a>
+						<a href="/mng/sample/sampleList.do" class="#">샘플목록</a>
 					</div>
 				</li>
 			</ul>

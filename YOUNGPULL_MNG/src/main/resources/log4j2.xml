@@ -9,6 +9,16 @@
         <Logger name="java.sql" level="INFO" additivity="false">
             <AppenderRef ref="console" />
         </Logger>
+         <!-- 추가된 부분-->
+           <!-- Query Loggers -->
+        <Logger name="jdbc.sqlonly" additivity="false"> 
+            <level value="INFO"/> 
+            <appender-ref ref="console-infolog"/> 
+        </Logger>
+ 
+        <Root level="DEBUG">
+            <AppenderRef ref="console" />
+        </Root>
       <!--   <Logger name="egovframework" level="DEBUG" additivity="false">
             <AppenderRef ref="console" />
         </Logger> -->

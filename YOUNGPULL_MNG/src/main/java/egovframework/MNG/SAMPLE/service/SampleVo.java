@@ -2,10 +2,10 @@ package egovframework.MNG.SAMPLE.service;
 
 import com.sun.xml.internal.ws.developer.Serialization;
 
-import egovframework.MNG.COMM.service.CommonVO;
+import egovframework.MNG.COMM.service.CommonVo;
 
 @Serialization
-public class SampleVo extends CommonVO{
+public class SampleVo extends CommonVo{
 	
 	/*일련번호*/
 	private String seq_v;

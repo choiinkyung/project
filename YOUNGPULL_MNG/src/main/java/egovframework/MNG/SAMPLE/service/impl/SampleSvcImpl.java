@@ -32,26 +32,26 @@ public class SampleSvcImpl extends EgovAbstractServiceImpl implements SampleSvc{
 	private EgovIdGnrService sampleIndexService;
 
 	@Override
-	public List SAMPLE_R(Map paramMap) throws Exception {
+	public List<?> SAMPLE_R(Map<String,Object> paramMap) throws Exception {
 		// TODO Auto-generated method stub
 		
 		return sampleMapper.SAMPLE_R(paramMap);
 	}
 
 	@Override
-	public int SAMPLE_CNT_R(Map paramMap) throws Exception {
+	public int SAMPLE_CNT_R(Map<String,Object> paramMap) throws Exception {
 		// TODO Auto-generated method stub
 		return sampleMapper.SAMPLE_CNT_R(paramMap);
 	}
 
 	@Override
-	public SampleVo SAMPLE_DTL_R(Map paramMap) throws Exception {
+	public SampleVo SAMPLE_DTL_R(Map<String,Object> paramMap) throws Exception {
 		// TODO Auto-generated method stub
 		return sampleMapper.SAMPLE_DTL_R(paramMap);
 	}
 
 	@Override
-	public JSONObject SAMPLE_CUD(Map paramMap) throws Exception {
+	public JSONObject SAMPLE_CUD(Map<String,Object> paramMap) throws Exception {
 		// TODO Auto-generated method stub
 		String dataCode = "";
 		String dataStatus = paramMap.get("dataStatus") != null || !"".equals(paramMap.get("dataStatus")) ? paramMap.get("dataStatus").toString() : "";

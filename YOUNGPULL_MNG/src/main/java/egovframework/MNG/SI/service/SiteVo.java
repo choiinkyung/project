@@ -2,10 +2,10 @@ package egovframework.MNG.SI.service;
 
 import com.sun.xml.internal.ws.developer.Serialization;
 
-import egovframework.MNG.COMM.service.CommonVO;
+import egovframework.MNG.COMM.service.CommonVo;
 
 @Serialization
-public class SiteVo extends CommonVO{
+public class SiteVo extends CommonVo{
 	/*도메인주소*/
 	private String SI_DADDR_V;
 	/*도메인명*/

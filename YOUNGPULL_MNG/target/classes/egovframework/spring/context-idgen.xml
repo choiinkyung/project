@@ -36,7 +36,19 @@
 	</bean>	
 	<!-- //SAMPLE -->
 	
+	<!-- COMMON_CODE -->
+	<bean name="codeIndexService" class="egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrServiceImpl" destroy-method="destroy">
+		<property name="dataSource" ref="dataSource" />
+		<property name="strategy" 	ref="CodeMixPrefix" />
+		<property name="blockSize" 	value="11"/>
+		<property name="table"	   	value="CM_IDS"/>
+		<property name="tableName"	value="CM_CODE"/>
+	</bean>
 	
-	
+	<bean name="CodeMixPrefix" class="egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl">
+		<property name="prefix"   value="CODE-" />
+		<property name="cipers"   value="6" />
+		<property name="fillChar" value="0" />
+	</bean>
 			
 </beans>

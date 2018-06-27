@@ -7,10 +7,11 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import egovframework.MNG.SAMPLE.service.SampleSvc;
 import egovframework.MNG.util.RequestUtil;
@@ -25,6 +26,9 @@ public class SampleCtrl {
 	@Resource(name = "sampleSvc")
 	private SampleSvc sampleSvc;
 	
+	final static Logger logger = LoggerFactory.getLogger(SampleCtrl.class);
+
+	
 	/**
 	 * 샘플 목록조회
 	 * @param model
@@ -36,7 +40,7 @@ public class SampleCtrl {
 	public String SAMPLE_R(ModelMap model, HttpServletRequest request) throws Exception {
 
 		Map paramMap = RequestUtil.process(request);
-		System.out.println(">>>>>>>>paramMap = " + paramMap);
+		
 		try {
 			Map pageMap = Page.PageSet(paramMap, 
 					sampleSvc.SAMPLE_CNT_R(paramMap), 10, 10);
