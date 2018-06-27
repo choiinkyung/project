@@ -4,6 +4,7 @@
 	
 	<!-- fileView -->
 	<select id="selectFileView" parameterType="egovMap" resultType="egovMap">
+		/*COMMON_SEQ > selectFileView */
 		SELECT
 			 CM_SEQ_V	/*파일번호*/
 			,CM_ORGFILENAME_V	/*원본파일명*/
@@ -15,14 +16,169 @@
 			,CM_REFSEQ3_V	/*참조일련번호3*/
 		FROM
 			CM_FILE
-		WHERE CM_SEQ_V = #{FILE_SEQ_V}
-		AND	  CM_REFSEQ1_V = #{FILE_REF1_V}
-		<if test="FILE_REF2_V != null and FILE_REF2_V != '' ">
-			AND	  CM_REFSEQ2_V = #{FILE_REF2_V}	
+		WHERE CM_SEQ_V = #{fileSeq}
+		AND	  CM_REFSEQ1_V = #{fileRef1}
+		<if test="fileRef2 != null and fileRef2 != '' ">
+			AND	  CM_REFSEQ2_V = #{fileRef2}	
 		</if>
-		<if test="FILE_REF3_V != null and FILE_REF3_V != '' ">
-			AND	  CM_REFSEQ3_V = #{FILE_REF3_V}	
+		<if test="fileRef3 != null and fileRef3 != '' ">
+			AND	  CM_REFSEQ3_V = #{fileRef3}	
 		</if>
 	</select>
-
+	
+	<!-- 공통코드조회 -->
+	<select id="COMMON_CODE_R" parameterType="egovMap" resultType="commonVo">
+		/*COMMON_SEQ > COMMON_CODE_R*/
+		SELECT
+			 CODE_UPID_V	/*상위코드아이디*/
+			,CODE_UPNAME_V	/*상위코드명*/
+			,CODE_ID_V		/*코드아이디*/
+			,CODE_NAME_V	/*코드명*/
+			,CODE_ORDER_N	/*정렬순서*/
+			,CODE_REF1_V	/*참조일련번호1*/
+			,CODE_REF2_V	/*참조일련번호2*/
+			,CODE_REF3_V	/*참조일련번호3*/
+			,CODE_REF4_V	/*참조일련번호4*/
+			,CODE_REF5_V	/*참조일련번호5*/ 
+		FROM
+			CM_CODE
+		WHERE 1=1
+		<if test="codeUpId != null and codeUpId != '' ">
+			AND	  CODE_UPID_V LIKE '%${codeUpId}%' 	
+		</if>
+		<if test="codeUpName != null and codeUpName != '' ">
+			AND	  CODE_UPNAME_v LIKE '%${codeUpName}%' 	
+		</if>
+		<if test="codeId != null and codeId != '' ">
+			AND   CODE_ID_V = #{codeId}
+		</if>
+		<if test="codeName != null and codeName != '' ">
+			AND	  CODE_NAME_v LIKE '%${codeName}%' 	
+		</if>
+		<if test="codeRef1 != null and codeRef1 != '' ">
+			AND	  CODE_REF1_V = #{codeRef1}	
+		</if>
+		<if test="codeRef2 != null and codeRef2 != '' ">
+			AND	  CODE_REF2_V = #{codeRef2}	
+		</if>
+		<if test="codeRef3 != null and codeRef3 != '' ">
+			AND	  CODE_REF3_V = #{codeRef3}	
+		</if>
+		<if test="codeRef4 != null and codeRef4 != '' ">
+			AND	  CODE_REF4_V = #{codeRef4}	
+		</if>
+		<if test="codeRef5 != null and codeRef5 != '' ">
+			AND	  CODE_REF5_V = #{codeRef5}	
+		</if>
+		ORDER BY CODE_UPID_V DESC, CODE_ORDER_N ASC
+	</select>
+	
+	<!-- 공통코드 등록/수정 -->
+	<insert id="COMMON_CODE_C"  parameterType="egovMap">
+		/*COMMON_SEQ > COMMON_CODE_C */
+		INSERT INTO CM_CODE
+		(
+			 CODE_UPID_V	/*상위코드아이디*/
+			,CODE_UPNAME_V	/*상위코드명*/
+			,CODE_ID_V		/*코드아이디*/
+			,CODE_NAME_V	/*코드명*/
+			,CODE_ORDER_N	/*정렬순서*/
+			,CODE_REF1_V	/*참조일련번호1*/
+			,CODE_REF2_V	/*참조일련번호2*/
+			,CODE_REF3_V	/*참조일련번호3*/
+			,CODE_REF4_V	/*참조일련번호4*/
+			,CODE_REF5_V	/*참조일련번호5*/
+		)
+		VALUES
+		(
+			 #{code_upId_v}
+			,#{code_upName_v}
+			,#{code_id_v}
+			,#{code_name_v}
+			,#{code_order_n}
+			,#{code_ref1_v}
+			,#{code_ref2_v}
+			,#{code_ref3_v}
+			,#{code_ref4_v}
+			,#{code_ref5_v}
+		)
+	</insert>
+	
+	
+	<!-- 공통코드 등록/수정 -->
+	<insert id="COMMON_CODE_U"  parameterType="egovMap">
+		/*COMMON_SEQ > COMMON_CODE_U */
+		UPDATE CM_CODE SET
+			 CODE_UPNAME_V		=	#{code_upName_v}	
+			,CODE_NAME_V		=	#{code_name_v}	
+			,CODE_ORDER_N		=	#{code_order_n}
+			,CODE_REF1_V		=	#{code_ref1_v}	
+			,CODE_REF2_V		=	#{code_ref2_v}	
+			,CODE_REF3_V		=	#{code_ref3_v}	
+			,CODE_REF4_V		=	#{code_ref4_v}	
+			,CODE_REF5_V		=	#{code_ref5_v}	
+		WHERE CODE_UPID_V 		= #{code_upId_v}	
+		AND	  CODE_ID_V			=	#{code_id_v}	
+	</insert>
+	
+	<!-- 공통코드 삭제 -->
+	<delete id="COMMON_CODE_D" parameterType="egovMap">
+		/*COMMON_SEQ > COMMON_CODE_D */
+		DELETE FROM CM_CODE
+		WHERE CODE_UPID_V = #{code_upId_v}
+		<if test="code_id_v != null and code_id_v != '' ">
+		 AND CODE_ID_V = #{code_id_v}	
+		</if>
+	</delete>
+	
+	
+	<!-- 사이트 및 공통 코드조회 (공통) -->
+	<select id="COMMON_SITECODE_R" parameterType="egovMap" resultType="commonVo">
+	/*COMMON_SEQ > COMMON_SITECODE_R */
+		SELECT * FROM (
+		<choose>
+			<when test="codeType eq 'site'">
+				SELECT 
+					 SI_DADDR_V	AS CODE_ID_V		/*코드아이디*/
+					,SI_DNAME_V	AS CODE_NAME_V		/*코드명*/
+				FROM SI_SITE_MNG
+				WHERE 1=1
+			</when>
+			<when test="codeType eq 'code'">
+				SELECT
+					 CODE_ID_V		/*코드아이디*/
+					,CODE_NAME_V	/*코드명*/
+				FROM
+					CM_CODE
+				WHERE CODE_UPID_V = #{codeUpId} 	
+				<if test="codeUpName != null and codeUpName != '' ">
+					AND	  CODE_UPNAME_v LIKE '%${codeUpName}%' 	
+				</if>
+				<if test="codeId != null and codeId != '' ">
+					AND   CODE_ID_V = #{codeId}
+				</if>
+				<if test="codeName != null and codeName != '' ">
+					AND	  CODE_NAME_v LIKE '%${codeName}%' 	
+				</if>
+				<if test="codeRef1 != null and codeRef1 != '' ">
+					AND	  CODE_REF1_V = #{codeRef1}	
+				</if>
+				<if test="codeRef2 != null and codeRef2 != '' ">
+					AND	  CODE_REF2_V = #{codeRef2}	
+				</if>
+				<if test="codeRef3 != null and codeRef3 != '' ">
+					AND	  CODE_REF3_V = #{codeRef3}	
+				</if>
+				<if test="codeRef4 != null and codeRef4 != '' ">
+					AND	  CODE_REF4_V = #{codeRef4}	
+				</if>
+				<if test="codeRef5 != null and codeRef5 != '' ">
+					AND	  CODE_REF5_V = #{codeRef5}	
+				</if>
+			</when>
+		</choose>
+		)T1
+	</select>
+	
+	
 </mapper>
